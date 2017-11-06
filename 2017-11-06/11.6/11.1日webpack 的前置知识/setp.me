@@ -1,0 +1,16 @@
+1. npm init -y //初始化 package.json
+2. 安装依赖
+    npm i -D <package包名> // 声明为开发依赖
+    npm i -S <package> //声明为生产依赖
+
+3. 新建 webpack.config.js 文件
+
+4. 配置入口和出口, 接着运行
+
+5. 根据报错提示, 添加 loader 配置,
+
+6. 配置好 babel-loader 和 .babelrc
+
+7. import {c as name} from './component/myName';
+
+8. 在 package.json 里面配置好命令 : dev : "webpack" , 使用 npm run dev 运行

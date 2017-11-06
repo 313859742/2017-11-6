@@ -1,0 +1,14 @@
+
+body,h2,dl,dd{
+    margin: 0;
+}
+input{
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.box{
+    width:960px;
+    margin: 0 auto;
+}
