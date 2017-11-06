@@ -1,0 +1,91 @@
+body,h3,ul{
+	margin: 0;
+}
+ul{
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color: #000000;
+}
+img{
+	vertical-align: top;
+	border: none;
+}
+li{
+	list-style: none;
+}
+.clearfix{
+	*zoom: 1;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.box{
+	width: 333px;
+	font: 12px "宋体";
+	padding: 25px 15px 0 19px;
+}
+.head h3{
+	width: 121px;
+	background: url(../0515/img/zxtj.jpg) no-repeat 10px 2px;
+	text-indent: -999px;
+	height:30px;
+	border-left: solid #8bcc00 5px;
+	padding-right: 2px;
+	display: inline-block;
+}
+.head div{
+	display: inline-block;
+}
+.head div .region{
+	border-right: solid 1px #d8d8d8;
+	padding-right:7px
+}
+.region1{
+	float: right;
+	padding-top:9px;
+	}
+.head .region1 .om{
+	margin-left: 2px;
+	border: none;
+	padding: 0;
+	color: #0f820c;
+}
+.head .om1{
+	margin-left: 3px;
+	color: #0f820c;
+}
+.box .content{
+	font: 14px/36px "宋体";
+}
+.content1{
+	padding-top: 11px;
+}
+.content span{
+	color: #0f820c;
+}
+.liitem{
+	float: right;
+}
+li:hover .liitem{
+	display: none;
+}
+li .liitem1{
+	display: none;
+}
+li:hover .liitem1{
+	display: block;
+}
+.liitem1{
+	float:right;
+}
+li:hover{
+	border-bottom: 1px dotted #e1e1e1;
+	height: 35px;
+}
+li:hover img{
+	margin-top: 14px;
+}

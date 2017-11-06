@@ -1,0 +1,157 @@
+.content{
+    height: 586px;
+}
+.content .head{
+    height: 36px;
+    background-color: #6394c5;
+    border: 1px solid #5b88b8;
+    text-indent: 20px;
+    font: 14px/36px  "宋体";
+    color: #ffffff;
+}
+.content .left{
+    float: left;
+    width: 642px;
+    height: 497px;
+    border: 1px solid #cccccc;
+    border-top:none;
+    border-right: 1px solid #e0e0e0;
+    padding-top: 50px;
+}
+.content .left dt{
+    margin-bottom: 34px;
+    margin-left: 145px;
+    height: 34px;
+}
+.content .left dt a{
+    float: left;
+    width: 166px;
+    height: 30px;
+    border: 1px solid #cccccc;
+    margin-right: -1px;
+    padding-top: 2px;
+    color: #555555;
+    text-align: center;
+    font: 14px/30px "宋体";
+}
+dt a:hover{
+    width: 166px;
+    height: 30px;
+    border: 1px solid #6394c5;
+    margin-right: -1px;
+    padding-top: 2px;
+    text-align: center;
+    font: 14px/30px "宋体";
+    color: #ffffff;
+    background-color: #6394c5;
+}
+.content .left .one{
+    color: #999999;
+    height: 61px;
+    margin-bottom: 12px;
+    font:12px/34px "宋体";
+}
+.content .left dd .dz{
+    color: #555555;
+    float: left;
+    width: 135px;
+    height: 27px;
+    font: 14px/27px "宋体";
+    text-align: right;
+    padding-right: 10px;
+}
+.content .left dd span{
+    display: block;
+}
+.content .left dd .sr{
+    float: left;
+    width: 336px;
+    height: 61px;
+}
+.content .left dd .sr .sele{
+    width: 98px;
+    height: 27px;
+}
+.content dd .inp1{
+    width: 210px;
+    height: 25px;
+}
+.content dd .inp2{
+    width: 332px;
+    height: 25px;
+}
+.content dd .inp3{
+    width: 206px;
+    height: 25px;
+}
+.content .left .fore{
+    height: 95px;
+}
+.content .left .fore .yz{
+    float:left;
+    height:50px;
+    width: 135px;
+    padding:2px 10px 0 0;
+    text-align: right;
+    font: 14px/50px "宋体";
+}
+.content .left .fore .suru{
+    float:left;
+    width: 208px;
+    height: 95px;
+    margin-top: 12px;
+}
+.content .left .fore span{
+    color: #999999;
+    font: 12px/54px "宋体";
+}
+.content .left .fore a{
+    color: #003399;
+    float: left;
+    width: 122px;
+    height: 95px;
+    margin-left: 8px;
+    font:12px/30px "宋体";
+    text-align: center;
+}
+.content .left .fore img{
+    display: block;
+}
+.content .left .tongyi{
+    width: 493px;
+    float: left;
+    height: 18px;
+    font: 14px/18px "宋体";
+    padding-left: 149px;
+}
+.content .zhuce{
+    margin-top:50px;
+    height: 54px;
+    text-indent: 149px;
+}
+.content .zhuce .tijiao{
+    color: white;
+    width: 117px;
+    height: 35px;
+    border:1px solid #4a9c32;
+    background-color: #5db348;
+}
+.content .right{
+    float: left;
+    width: 313px;
+    height: 547px;
+    background-color: #f5f5f5;
+    border-right:  1px solid #cccccc;
+    border-bottom:  1px solid #cccccc;
+}
+.content .right a{
+    display: inline-block;
+    width: 56px;
+    height: 26px;
+    background-color: #c5d6e7;
+    font-size: 12px;
+    color: #5283ba;
+    text-align: center;
+    line-height: 26px;
+    margin-left: 224px;
+}

@@ -1,0 +1,45 @@
+
+header{
+    height:51px;
+    padding-top:30px;
+}
+header .left{
+    float:left;
+    width: 391px;
+    height: 28px;
+    border-right:1px solid #cccccc;
+}
+header .left a{
+    float: left;
+    height: 28px;
+    width: 130px;
+    background-color: pink;
+}
+header .left .wy{
+    background: url(./img/wy.jpg) no-repeat;
+}
+header .left .wy126{
+    background: url(./img/wy126.jpg) no-repeat;
+}
+header .left .yeah{
+    background: url(./img/yeah.jpg) no-repeat;
+}
+header h2{
+    width: 452px;
+    height: 28px;
+    float: left;
+    text-indent: 12px;
+    font:20px/24px "宋体";
+}
+header .right{
+    float: left;
+    width: 116px;
+    height: 28px;
+    font:12px/28px "宋体";
+}
+header .right .duo{
+    height: 12px;
+    padding-right: 7px;
+    margin-right: 6px;
+    border-right:1px solid #cccccc;
+}

@@ -1,0 +1,72 @@
+react:是渲染页面，渲染数据，是ui的框架，给的数据是什么就显示成什么，react是一个概念，
+react运行原理：（把一个页面看做一个整体，改变即整体的页面，用一份页面的内容换成另外一份页面的内容）
+	1.输出一份 virtual Dom(虚拟的DOM，一个对象，描述dom结构)-->
+	2.React拿到这份虚拟的DOM去渲染界面 -->
+	3.当你需要改变页面的状态，从新得到一份新的 virtual DOM,然后去渲染（更新页面的状态） -->
+	4.旧的整个页面和新的页面去比较，比较出哪里不同，就去改变相应不同的部分
+		用某一个对象描述的内容来创建dom元素，把这些dom元素插入到容器里面
+
+	
+	
+	
+html-webpackk-plugin插件：(在dist文件下生成index.html文件)	
+clean-webpack-plugin插件：（在打包时生成新的文件之前，会将原先的旧文件删除掉）
+	这两个插件的用法：
+		const cleanWebpackPlugin=require('clean-webpack-plugin');
+		const htmlWebpackPlugin=require('html-webpack-plugin');
+		plugins:[
+			new HtmlWebpackPlugin({
+				filename:"index.html" , --->文件名可以任意写
+				template:'./src/index.html'
+			}),
+			new cleanWebpackPlugin(['dist'])
+		]
+		
+react的组件：(组件类的名称必须大写开头)
+	inport 
+	class App(className,组件的名字) extends React.Component{
+		render(){//组件必选写这个方法
+			return(
+				<div>
+					React
+					<div>
+						{this.props.children} //获取组件标签之间的children
+					</div>
+					<Apc></Apc>//可以任意嵌套
+				</div>//要渲染的东西
+			);
+		}
+	}
+	//标签之间的内容都叫children
+	//{this.props.children}-->获取标签之间的内容，
+	class Apc (className,组件的名字) extends React.Component{
+		
+		render(){//组件必选写这个方法
+			return(
+				<div>
+					12345
+					
+				</div>//要渲染的东西
+			);
+		}
+	}
+	ReactDOM.render(
+		<div>
+			<App>
+				<div>组件标签之间到的children</div>
+			</App>
+		</div>,
+		document,getElementById('root')
+	);
+		sss
+		
+		
+		
+		
+		
+		
+		
+需要下载的插件和预设：
+	babel-core  babel-loader babel-preset-react clean-webpack-plugin（每次打包生成内容会先将之前的删除掉，避免冲突） 
+	html-webpack-plugin（dist文件里面的index.html重复，不用再复制一份） 
+	react react-dom webpack

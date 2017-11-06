@@ -1,0 +1,10 @@
+
+footer{
+    /*height: 51px;*/
+    text-align: center;
+    word-spacing: 3px;
+}
+footer a{
+    font: 12px/42px "宋体";
+    color: #999999;
+}

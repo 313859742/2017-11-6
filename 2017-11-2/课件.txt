@@ -1,0 +1,149 @@
+react:是渲染页面，渲染数据，是ui的框架，给的数据是什么就显示成什么，react是一个概念，
+react运行原理：（把一个页面看做一个整体，改变即整体的页面，用一份页面的内容换成另外一份页面的内容）
+	1.输出一份 virtual Dom(虚拟的DOM，一个对象，描述dom结构)-->
+	2.React拿到这份虚拟的DOM去渲染界面 -->
+	3.当你需要改变页面的状态，从新得到一份新的 virtual DOM,然后去渲染（更新页面的状态） -->
+	4.旧的整个页面和新的页面去比较，比较出哪里不同，就去改变相应不同的部分
+		用某一个对象描述的内容来创建dom元素，把这些dom元素插入到容器里面
+
+
+		
+		
+注：class==>className，for ==>htmlFor,(遇到关键字的属性，将其变成另外一种样子)，
+	它是js语法的扩展，在React中可以方便的描述UI。
+	let jsx本身也是一个表达式，
+	标签之间的内容都叫children，如果是类的组件的标签，
+	{this.props.children}-->获取标签之间的内容，
+	相邻的jsx元素，必须包含在一个闭合的标签里面（必须逐级嵌套，或则是写在一个数组里面，例子：let a=[<div></div>,<div></div>]）
+	mkdir 文件名(命令新建文件夹)
+	
+	
+html-webpackk-plugin插件：(在dist文件下生成index.html文件)	
+clean-webpack-plugin插件：（在打包时生成新的文件之前，会将原先的旧文件删除掉）
+	这两个插件的用法：
+		const cleanWebpackPlugin=require('clean-webpack-plugin');
+		const htmlWebpackPlugin=require('html-webpack-plugin');
+		plugins:[
+			new HtmlWebpackPlugin({
+				filename:"index.html" , --->文件名可以任意写
+				template:'./src/index.html'
+			}),
+			new cleanWebpackPlugin(['dist'])
+		]
+		
+react的组件：(组件类的名称必须大写开头)
+	inport 
+	class App(className,组件的名字) extends React.Component{
+		render(){//组件必选写这个方法
+			return(
+				<div>
+					React
+					<div className="a">
+						{this.props.children} //获取组件标签之间的children
+					</div>
+					<Apc></Apc>//可以任意嵌套
+				</div>//要渲染的东西
+			);
+		}
+	}
+	
+	class Apc (className,组件的名字) extends React.Component{
+		
+		render(){//组件必写这个方法
+			return(
+				<div>
+					12345
+					
+				</div>//要渲染的东西
+			);
+		}
+	}
+	ReactDOM.render(
+		<div>
+			<App>
+				<div>组件标签之间到的children</div>
+			</App>
+		</div>,
+		document,getElementById('root')
+	);
+		
+app.js（入口文件）
+	config.js里面添加   --watch（自动打包）
+	新建一个component文件夹
+		
+webpack打包css
+	把css打包到js文件里面，一般是开发阶段css的打包方式 ---->开发阶段
+	
+	把css打包成一个单独的css文件，通过link引入（自动创建）------>生产阶段
+	npm i -D css-loader(使用这个命令下载，css样式打包)
+	import './common/style/index.css';（在app.js文件引入这个index.css）
+	注：遇到url或者@import的时候，会引入里面的资源，引入资源的过程中，更根据资源的类型在使用相对应的loader去处理
+	@import：会发起网络请求，不建议使用，
+/*******************************************************************************************/	
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+export default class Header extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+			
+        )
+    }
+}
+
+/*****************************************webpack.config.js****************************************/
+const path=require('path');
+const rv=(...a)=>path.resolve(__dirname,...a);
+const HtmlEebpackPluagin=require('html-webpack-plugin');
+const CleanWebpackPlugin=require('clean-webpack-plugin');
+module.exports={
+	entry:'./src/app.js',
+	output:{
+		path:rv('dist'),
+		filename:'app.js'
+	},
+	module:{
+		rules:[
+			{
+				test:/\.js$/,
+				use:['babel-loader'],
+				exclude:[rv('node_modules')]
+			},
+			{
+				test:/\.css$/,
+				use:['style-loader','css-loader']
+			}
+		]
+	},
+	plugins:[
+		new HtmlEebpackPluagin({
+			
+			filename:'index.html',
+			template:'./src/index.html'
+		}),
+		new CleanWebpackPlugin(['dist'])
+	]
+};
+注：style-loader 必须放到 css-loader 之前 （即先将样式放到打包的html里面去，在将样式转化成字符串进行打包）
+
+
+/**********************************************图片打包的样式******************************************/
+
+import yz from '../common/img/yz.jpg';//如果图片多次使用 的情况下，给一个变量，可以多次使用，如果只使用一次，直接在链接里面写表达式就行
+const yzCopy=require('../common/img/right.jpg');
+file-loader(图片打包，加载文字路径，资源)：命令行下载即可
+{
+	test:/\.(jpg|png|ipeg|gif)$/,
+	use:['file-loader']
+}
+
+/******************************************************************************************************/
+需要下载的插件和预设：
+	开发阶段：（-D）
+		babel-core  babel-loader babel-preset-react clean-webpack-plugin（每次打包生成内容会先将之前的删除掉，避免冲突） 
+		html-webpack-plugin（dist文件里面的index.html重复，不用再复制一份） webpack  css-loader（打包css样式） style-loader(将css样式放到打包的html里面)
+		file-loader(图片打包)
+	生产阶段：（-S）
+		react react-dom 
