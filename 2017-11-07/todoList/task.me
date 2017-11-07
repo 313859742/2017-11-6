@@ -1,0 +1,22 @@
+1. 组件受控
+    某些组件有自己的行为, 比如 input, 你输入东西的时候, 页面状态就会变化, 这是组件本身的行为
+    如果给 input 一个 value 值, 这样就收到了 react 的控制, 可以通过onChange 来 setState 来改变 input 的value.
+    非受控组件 => 受控组件
+
+2.合成的事件对象
+    event
+        nativeEvent: 访问浏览器 dom 元素的事件对象
+        preventDefault
+        stopPropagation
+        target 拿到真实的 dom 元素
+
+    和事件相关的文档: https://reactjs.org/docs/events.html
+
+3. map 方法
+    数组下的一个方法, 接收一个回调函数, 回调函数里面接收的参数是: (元素,索引,数组)
+    回调函数的返回值会 替换掉原来的元素, 返回一个新数组
+    原来被遍历的数组没有变化
+
+4. 当把数组卸载 jsx 结构里面, react 会自动展开
+
+5. 在数组里面的 jsx 元素应该在最外层的结构有一个 key, 应该保证相应数据的 key 是唯一的. 同一份结构, 永远保证不管如何视图变化, 相同的数据对应同一个 key 值
