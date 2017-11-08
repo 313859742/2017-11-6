@@ -1,0 +1,39 @@
+在元素上面声明ref属性，可以通过组件拿到真实的dom元素，
+	1.ref="de"  ==>this.ref.de   (被遗弃)
+	2.ref= {  (el)==>{ this.cont=el}  }:this.cont 就可以拿到真实的dom
+2.用类声明的组件声明周期：（每个组件是一个单独的）
+	a.mounting 阶段：组件挂载阶段，出生阶段，只能出生一次
+	b.updating 阶段：更新阶段，即存在的时候
+	c.unmounting 阶段：卸载阶段，即死亡阶段
+3.生命周期的函数：
+	mounting :
+		***constructor	-->挂载
+		componentWillMount -->组件将要被挂载
+		***render          -->执行
+		***componentDidMount  ---> 挂载完成
+注：在挂载完成之前，所有的组件都应该render
+所有组件render之后，开始依次加载：同层级的组件从先往后挂载，父子组件，先挂载子集
+如果要拿到真实的dom 元素，必须在组件挂载完成之后
+
+更新阶段：componentWillReceiveProps() -->奇葩，不会再自身setState后执行，父组件的render执行
+	***shouldComponentUpdate(nProps,nState){
+		np != this.props;
+		ns != this.state;
+		return true;
+		
+	
+	} --> 特殊(决定组件会不会被更新,默认值是true,)，返回值不是true，就是false,默认值是true,如果返回时false 会阻断render的执行，拦截这一次的更新
+	componentWillUpdate(nProps,nState){ -->更新之前
+		this,setState({
+			
+		})
+		console.log(this.props, state)
+	}
+	render -- >就是那一刻
+	componentDidUpdate() -->更新之后
+	注：跟新阶段不要setState ,除了奇葩那个时候	
+卸载阶段：
+	componentWillUnmount(){}卸载之前
+
+
+react-router-dom

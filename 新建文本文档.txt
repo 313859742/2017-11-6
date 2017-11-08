@@ -1,0 +1,20 @@
+cookie:其实是后端的技术，
+cookie是在服务器下运行的，前端使用一般用来数据存储（配和后端进行一些用户优化）
+注：键值对的形式，名字一样的情况下会被覆盖
+设置cooking：每个域名下一般就多少条（多少个，多少K，
+
+document.cookie='key=value,key1=value1';
+生命周期：默认的生命周期就是当前的浏览器彻底关闭，生命结束
+	设置生命周期：
+
+function setCookie(key,val,time){
+	if(time>0){
+		var d=new Date();
+		d.setDate(d.getDate()+time);
+		document.cookie=key+'='+val+';expires='+d';
+	}else {
+	document.cookie=key+'='+val;
+	}
+}
+
+目的：前端种cookie当作数据存储，小型的数据库

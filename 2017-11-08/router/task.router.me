@@ -1,0 +1,32 @@
+
+router
+    Router
+        browserHistoy
+        hashHistory
+
+    BrowserRouter
+    HashRouter
+
+关于浏览器的 history
+    push push 一个新的 entry 到 history stack
+    history stack
+        所以的浏览记录都存放在这个 history stack 里面, 它就相当于一个数组
+    entry
+        每一个访问的页面(访问过的路径)
+
+    点击一下 a 链接, 就是往历史堆里面放入一个地址
+
+BrowserRouter
+    使用 browserHistoy
+    放到最顶层, 把其它的组件作为 children
+
+Route
+    path的属性: 如果地址匹配到了这个路径, 就会显示
+    component属性: 接收一个组件变量
+        会往组件里面传入3个 props: history, location, match
+    不能嵌套元素
+
+
+Link
+    最后会被渲染成 a 链接
+    to的属性: 跳转到哪里
