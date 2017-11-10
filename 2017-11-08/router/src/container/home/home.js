@@ -3,8 +3,14 @@ export default class extends Component{
         super(props)
     }
     render(){
+        let {location} = this.props;
+        let {from} = location.state || '';
         return(
-            <div>首页的内容</div>
+            <div>
+                首页的内容
+                <div>哪里过来的：{from}</div>
+
+            </div>
         )
     }
 }
