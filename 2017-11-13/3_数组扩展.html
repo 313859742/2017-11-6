@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // let arr = new Array(3);
+
+    // Array.of(3, 11, 8) // [3,11,8]
+    // Array.of(3) // [3]
+    // Array.of(3).length // 1
+    //唯一的好处就是写3不再是length了
+    // let arr2 = Array.of(3)
+    // console.log(arr2[0])
+
+
+    let arr = [1,2,3,4,5];
+
+    // for(var i of arr.keys()){
+    //     console.log(arr[i]);
+    // }
+
+    /*
+        entries,拿key和value进行遍历
+
+        只有拥有遍历接口(Symbol.iterator)才能使用for of循环
+    
+        这个遍历接口可以返回对象，对象中有一个叫做next的函数
+        这个函数需要返回对象
+        {
+            value:xx,
+            done:布尔值（true:停止遍历，false：可以遍历  ）
+        }
+    */
+
+    // console.dir(arr);
+    // for(var [key,value] of arr.entries()){
+    //     console.log(value);
+    // }
+
+    let obj = {name:'hehe',age:18};
+
+    // console.log(Object.keys(obj)); [name,age]//把对象的key值放到一个数组中
+
+    //添加遍历器
+    // obj[Symbol.iterator] = function(){
+    //     let arr = Object.keys(obj); //拿到对象key值[name,age]
+    //     let index = 0;
+    //     return {
+    //         next(){
+    //             //如果添加成立就停止遍历
+    //             if(index >= arr.length){
+    //                 return {
+    //                     value:1,
+    //                     done:true
+    //                 }
+    //             }else{
+    //                //继续遍历
+    //                 return {
+    //                     value:{
+    //                         val:obj[arr[index]],//obj[arr[0]] -> obj.name
+    //                         key:arr[index++] //arr[0++]  name
+    //                     },
+    //                     done:false
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    Object.prototype[Symbol.iterator] = function(){
+        let index = 0;
+        let arr = Object.keys(this);
+        let _this = this;
+        return {
+
+            next(){
+
+                if(index >= arr.length){
+                    return {value:undefined,done:true}
+                }else{
+            
+                    return {
+                        value:{
+                            val:_this[arr[index]],
+                            key:arr[index++]
+                        },
+                        done:false
+                    }
+                }  
+
+            }
+
+        }
+        // console.log(arr);
+    }
+
+    // console.log(obj[Symbol.iterator])
+
+    for(let {val,key} of obj){
+        console.log(val,key)
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

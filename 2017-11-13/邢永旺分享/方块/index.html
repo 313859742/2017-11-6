@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: pink;
+        }
+        #c1{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="c1" width="400" height="400"></canvas>
+    <script>
+        let c = document.getElementById('c1');
+        let GC = c.getContext('2d');
+        GC.fillRect(0,0,100,100); //画一个填充方块
+        let num = 0;
+        setInterval(function(){
+            num++;
+            GC.clearRect(0,0,c.width,c.height); //删除画布
+             GC.fillRect(num,num,100,100);//每次都画一个
+        }, )
+    </script>
+</body>
+</html>

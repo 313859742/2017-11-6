@@ -11,32 +11,32 @@ module.exports = {
         filename : 'app.js'
     },
     devtool:'eval-source-map',
-//     module:{
-//         rules :[
-//             {
-//                 test: /\.js$/,
-//                 use : [
-//                     {
-//                         loader : 'babel-loader',
-//                         options :{
-//                             presets : ['react'],
-//                             plugins : ['transform-object-rest-spread']
-//                         }
-//                     }
-//                 ],
-//                 exclude : [rv('node-modules')]
-//             },
-//             {
-//                 test : /\.css$/,
-//                 use : ['style-loader' , 'css-loader']
-//             },
-//             {
-//                 test : /\.(jpg|png|gif|jpeg)$/,
-//                 use : ['file-loader']
-//             }
-//         ]
-//     },
-//
+    module:{
+        rules :[
+            {
+                test: /\.js$/,
+                use : [
+                    {
+                        loader : 'babel-loader',
+                        options :{
+                            presets : ['react'],
+                            plugins : ['transform-object-rest-spread']
+                        }
+                    }
+                ],
+                exclude : [rv('node-modules')]
+            },
+            {
+                test : /\.css$/,
+                use : ['style-loader' , 'css-loader']
+            },
+            {
+                test : /\.(jpg|png|gif|jpeg)$/,
+                use : ['file-loader']
+            }
+        ]
+    },
+
     plugins : [
         new htmlWebpackPlugin({
             filename : 'index.html',

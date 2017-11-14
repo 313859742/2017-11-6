@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: green;
+        }
+        #c1{
+            background-color: #fff;
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 450px;
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ***********样式中的宽高是等比例缩放    行间的可以设置 默认宽是300高是150
+        getContext  绘制方式
+        fillRect( l,t ,w ,h ,) :   填充的方块 left值 top值  宽和高
+        strokeRect(l,t,w,h):              边框的方块  定位值要加上0.5
+        fillStyle:填充颜色
+        lineWidth:线宽度,
+        strokStyle:边框颜色
+
+
+
+        (边界连接点样式)lineJoin = "roud"(圆角)  "beval"(斜角)
+        (端点样式)lineCap = 'roud'(圆角)  “squre”  (放大)
+
+        beginPath:开始绘制路径
+        closePath:结束绘制路径
+        moveTo:移动到绘制的新目标点
+        lineTo:新的目标点
+        stroke： 画线 默认黑色
+        fill: 填充画好的图形
+        rect:绘制矩形
+        clearRect: 删除一个画布的矩形区域(l,t,w,h)
+        save: 保存路径  restre:恢复路径  这两个参数一般都是一起使用   一个在代码的开端 一个在代码的末端   就像是js里的局部变量的感觉
+        
+     -->
+    <canvas id="c1" width="400" height="400px"></canvas>
+    <script>
+        var oc= document.getElementById('c1');
+        var ogc = oc.getContext('2d'); //绘制环境
+        oc.onmousedown = function(ev){
+            var ev = ev||event; 
+            ogc.moveTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);//移动到绘制的新目标点
+            document.onmousemove = function(ev){
+              ogc.lineTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);//新的目标点
+              ogc.stroke(); // 画线
+       };
+       document.onmouseup= function(){
+           document.onmousemove= null;
+           document.onmouseup= null;
+       }
+        }
+        
+    </script>
+</body>
+</html>

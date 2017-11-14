@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: black;
+    }
+    canvas{
+        background: white;
+    }
+</style>
+<body>
+    <canvas id="c" width="400" height="400"></canvas>
+</body>
+<script>
+    /*
+        其他曲线：
+            arcTo(x1,y1,x2,y2,r)
+            quadraticCurveTo(dx,dy,x1,y1)    贝塞尔曲线  第一组是控制点      第二组是结束点
+            bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1) 两组的贝塞尔曲线
+        
+
+    
+    */ 
+        let cg =c.getContext('2d');
+        // cg.moveTo(200,200);
+        //弧度 = 角度*Math.PI/180
+        // cg.arc(200,200,150,0,90*Math.PI/180,false);  //left值  top值   半径    开始弧度  结束弧度   旋转方向
+        // cg.closePath();
+        toDraw();
+        setInterval(toDraw,1000);
+        function toDraw(){
+            let x= 200;
+            let y= 200;
+            let r= 150;
+            cg.clearRect(0,0,c.width,c.height);
+            let data = new Date();
+            let h = data.getHours();
+            let m = data.getMinutes();
+            let s = data.getSeconds();
+            let hV = (-90+h*30+m/2)*Math.PI/180;
+            let mV = (-90+m*6)*Math.PI/180;
+            let sV = (-90+s*6)*Math.PI/180;
+            // cg.moveTo(x,y);
+            // cg.arc(x,y,r,0,6*Math.PI/180,false)
+            cg.beginPath();
+            for(let i=0; i<60; i++){
+                cg.moveTo(x,y);
+                cg.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false)
+            }
+            cg.closePath();
+            cg.stroke();
+
+
+
+
+            cg.fillStyle = "white";
+            cg.beginPath();
+            cg.moveTo(x,y);
+            cg.arc(x,y,r*19/20,0,360*Math.PI/180,false);
+            cg.closePath();
+            cg.fill();
+
+
+            cg.lineWidth = 3;
+            cg.beginPath();
+            for(let i=0; i<12; i++){
+                cg.moveTo(x,y);
+                cg.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false)
+            }
+            cg.closePath();
+            cg.stroke();
+
+
+
+            cg.fillStyle = "white";
+            cg.beginPath();
+            cg.moveTo(x,y);
+            cg.arc(x,y,r*18/20,0,360*Math.PI/180,false);
+            cg.closePath();
+            cg.fill();
+
+            cg.lineWidth = 5;
+            cg.beginPath();
+            cg.moveTo(x,y);
+            cg.arc(x,y,r*10/20,hV,hV,false);
+            cg.closePath();
+            cg.stroke();
+
+
+
+            cg.lineWidth = 3;
+            cg.beginPath();
+            cg.moveTo(x,y);
+            cg.arc(x,y,r*14/20,mV,mV,false);
+            cg.closePath();
+            cg.stroke();
+
+
+            cg.lineWidth = 1;
+            cg.beginPath();
+            cg.moveTo(x,y);
+            cg.arc(x,y,r*19/20,sV,sV,false);
+            cg.closePath();
+            cg.stroke();
+        }
+
+
+        
+</script>
+</html>
