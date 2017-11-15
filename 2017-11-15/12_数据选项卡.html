@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+  background: yellow;
+}
+div{
+  border: 1px solid #000;
+  height: 50px;
+  width:100px;
+  display: none;
+}
+div.show{
+  display: block;
+}
+
+</style>
+</head>
+<body>
+    <input type="button" value="按钮一" class="active">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+  <div class="show">111</div>
+  
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+ 
+  let $btns = $('input');
+  let $divs = $('div');
+
+  $btns.on('click',{data:[11111,2222,3333]},function(ev){
+    $btns.removeClass('active');
+    $(this).addClass('active');
+    $divs.text(ev.data.data[$(this).index('input')]);
+  });
+
+
+
+</script>
+</body>
+</html>

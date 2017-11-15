@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:150px;
+     height: 150px;
+     background:salmon;
+     /* display: none; */
+     /* position: absolute;
+     top:0;
+     left:0; */
+ }
+</style>
+</head>
+<body>
+    <button>按钮</button>
+    <div id="div1"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    slow","normal", or "fast"
+
+    jQ中的运动都基于 animate()
+
+    delay() 延迟
+
+
+
+  */
+
+  $('button').click(function(){
+    //$('#div1').hide('normal');
+
+    //$('#div1').toggle(500);  //宽高透明度
+
+    // $('#div1').slideDown();
+
+    // $('#div1').slideToggle(800); //改变高度
+
+    // $('#div1').fadeToggle(800); //透明度
+
+    $('#div1').animate({
+        width:300,
+    },500).delay(1000).animate({
+        height:600,
+    });
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+  background: yellow;
+}
+div{
+  border: 1px solid #000;
+  height: 50px;
+  width:100px;
+  display: none;
+}
+div.show{
+  display: block;
+}
+
+</style>
+</head>
+<body>
+    <input type="button" value="按钮一" class="active">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+  <div class="show">111</div>
+  <div>2222</div>
+  <div>3333</div>
+  
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    添加class
+      addClass()
+    删除class
+      removeClass()
+    
+    找到当前元素所在的位置（在父级同级兄弟元素中的位置）
+    JQ.index(可以选填范围)
+
+  */
+  let $btns = $('input');
+  let $divs = $('div');
+
+  // $btns.click(function(){
+  //   $btns.removeClass('active');
+  //   $divs.removeClass('show');
+  //   $(this).addClass('active');
+
+  //   // alert($(this).index('input'))
+  //  $divs.eq($(this).index('input')).addClass('show');
+  // });
+
+  // $btns.click(function(){
+  //   $(this).addClass('active').siblings('input').removeClass('active');
+  //   $divs.eq($(this).index('input')).addClass('show').siblings('div').removeClass('show');
+  // });
+
+  $btns.each((i,e)=>{
+    $(e).click(function(){
+      $(this).addClass('active').siblings('input').removeClass('active');
+      $divs.eq(i).addClass('show').siblings('div').removeClass('show');
+    });
+  })
+
+
+
+</script>
+</body>
+</html>

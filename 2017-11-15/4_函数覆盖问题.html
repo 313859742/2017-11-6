@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+   /*
+        预解析：
+            
+            c = function c(){
+
+            };
+            window.c
+
+        逐行解读代码:
+            到了第27行，赋值10
+            
+   */
+
+    alert(c); 
+    function c(){
+
+    };
+    window.c = 10;
+
+    alert(c)//10 ,不会是函数
+
+</script>
+</body>
+</html>

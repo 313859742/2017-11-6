@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+</style>
+</head>
+<body>
+  <ul id="ul">
+    <li class="a">
+      <p>1</p>
+      <ul >
+        <li>
+          <p id="p2" class="a">2</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul id="ul2">
+      <li class="a">
+        <p>1</p>
+        <ul >
+          <li>
+            <p>2</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  //$('#ul').children().css('background','red');
+  /*
+    (1):
+      获取元素的方式，会先找li再去找#ul2，那么性能会差很多
+    代码缓存：
+      先使用find把大模块缓存起来，然后从这个代码块下去获取，节省性能
+      
+  */
+
+  //$('#ul2 li').css('background','red');  //(1)
+
+  let $ul2 = $('#ul2');
+
+  $ul2.find('p').css('background','red')
+
+
+</script>
+</body>
+</html>

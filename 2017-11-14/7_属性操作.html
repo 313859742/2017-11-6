@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <div id="box">123456</div>
+  <input type="text" value="123456">
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+ /*
+    innerHTML   ->  html()
+    style.css/cssText    ->  css()
+    innerText   ->  text()
+    value  ->  val()
+
+    attr 属性 -> getAttribute + setAttribute
+
+    removeAttr 删除行间属性
+ */
+
+  // $('#box').html('78910jQk');
+  // $('#box').html('<p>pppp</p>'); //写操作
+
+  //console.log($('#box').html()) //读操作
+
+  // $('#box').text('<p>pppp</p>');//专门获取文本的
+
+  // $('input').val('呵呵');
+
+
+  /*
+    css:
+      一个参数
+        (1)字符串是获取
+        (2)对象（批量设置）
+
+      两个参数是设置
+  */
+  // console.log($('#box').css('width','100px'));
+
+  // $('#box').css({
+  //   width:100,
+  //   height:100
+  // })
+
+  //$('#box').attr('index',0);
+
+  // $('#box')[0].index = 0;
+
+  // alert($('#box')[0].index);
+
+  //alert($('#box').attr('index'));  
+
+  $('#box')[0].dataset.index = 0;
+
+  // console.log($('#box')[0].dataset.index);
+
+  // alert($('#box').attr('data-index'));
+
+
+
+
+
+  
+</script>
+</body>
+</html>

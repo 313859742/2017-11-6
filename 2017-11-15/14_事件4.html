@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:200px;
+     height: 200px;
+     background: blueviolet;
+ }
+ #div2{
+     width:50px;
+     height: 50px;
+     background:salmon;
+ }
+</style>
+</head>
+<body style="height:3000px">
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  
+  /*
+    jQ中的ev是二次封装的
+
+        阻止冒泡：
+            ev.stopPropagation();
+
+        return false;  (即可以阻止冒泡又可以阻止默认行为)
+
+        **** ev.originalEvent 可以获取到原生的事件对象
+  */
+
+    $('#div1').on('click.点击',function(ev){
+        alert(1111111);
+    });
+
+    $('#div2').on('click',function(ev){
+        alert(2222222);
+        // ev.cancelBubble = true;  //出不来的
+        // ev.stopPropagation();
+        console.log(ev.originalEvent);
+        return false;
+    });
+
+
+    $(document).on('keydown',function(ev){
+        if(ev.keyCode == 32){
+            // ev.preventDefault(); //阻止默认行为
+            return false;
+        }
+    })
+    
+
+ 
+
+
+
+
+
+</script>
+</body>
+</html>

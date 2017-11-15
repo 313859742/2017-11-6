@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width: 100px;
+    height: 100px;
+    background: red;
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 50px;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        width()
+        height()
+        innerWidth/innerHeight  (包含padding,不包含border)
+        outerWidth/outerHeight(包含padding,包含border)
+
+        outerWidth可以支持margin 在第二个参数上加true
+    */
+    // console.log($('#box').width());
+
+    // console.log($('#box').innerWidth());
+
+    // console.log($('#box').innerWidth());
+
+    console.log($('#box').outerWidth(200,true));
+
+
+</script>
+</body>
+</html>

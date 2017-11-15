@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+  background: yellow;
+}
+div{
+  border: 1px solid #000;
+  height: 50px;
+  width:100px;
+  display: none;
+}
+div.show{
+  display: block;
+}
+
+</style>
+</head>
+<body>
+  <p>这是第一个元素<a href="javascript:;">删除</a></p>
+  <p>这是第二个元素<a href="javascript:;">删除</a></p>
+  <p>这是第三个元素<a href="javascript:;">删除</a></p>
+  <p>这是第四个元素<a href="javascript:;">删除</a></p>
+  <p>这是第五个元素<a href="javascript:;">删除</a></p>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    hide:隐藏  -> display:none
+    show:显示  -> display:block
+
+    parent() -> parentNode
+    children()  -> chilren;
+  */
+  $('a').click(function(){
+    $(this).parent().hide();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        字符串、数字、布尔值、对象、undefined、null、symbol(唯一)
+    */
+
+    // let obj = {
+    //     "name":"hehe",
+    //     // "name":
+    // }
+
+    // let s = Symbol();
+    // console.log(typeof s);
+
+    //放到Symbol的对象，默认会用toString转一下
+    // const obj = {
+    //     toString() {
+    //         return 'abc';
+    //     }
+    // };
+    // const sym = Symbol(obj);
+
+    // console.log(sym);// Symbol(abc)
+
+
+    let s1 = Symbol('foo');
+    let s2 = Symbol('foo');
+
+    // console.log(s1 == s2) // false
+
+    var obj = {
+        s1,
+        s2
+    }
+    console.log(obj); //key值可以同名
+ 
+
+</script>
+</body>
+</html>

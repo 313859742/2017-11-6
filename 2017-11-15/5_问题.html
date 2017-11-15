@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        在低版本浏览器中undefined是可以为变量的
+        如果需要使用到undefined，并且undefined之前已经被赋值了
+        那么undefined无效。
+    */
+    var undefined = 10;
+
+    var a;
+
+    alert(a == undefined);
+
+</script>
+</body>
+</html>

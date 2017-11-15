@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 380px;
+            border: 1px solid #000;
+            clear: both;
+            overflow: hidden;
+        }
+
+        ul li {
+            width: 160px;
+            height: 180px;
+            border: 1px solid #000;
+            float: left;
+            margin: 10px;
+        }
+
+        img {
+            width: 160px;
+            height: 180px;
+            opacity: 0;
+            transition: 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <img _src="http:\/\/www.wookmark.com\/images\/thumbs\/662124_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662118_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662117_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img0.imgtn.bdimg.com/it/u=1479672232,3305648904&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img2.imgtn.bdimg.com/it/u=3187807329,3938478003&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662119_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img5.imgtn.bdimg.com/it/u=4100851266,3400767801&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img5.imgtn.bdimg.com/it/u=4100851266,3400767801&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http:\/\/www.wookmark.com\/images\/thumbs\/662124_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662118_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662117_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img0.imgtn.bdimg.com/it/u=1479672232,3305648904&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img2.imgtn.bdimg.com/it/u=3187807329,3938478003&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://www.wookmark.com//images//thumbs//662119_wookmark.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img5.imgtn.bdimg.com/it/u=4100851266,3400767801&fm=11&gp=0.jpg" alt="">
+        </li>
+        <li>
+            <img _src="http://img5.imgtn.bdimg.com/it/u=4100851266,3400767801&fm=11&gp=0.jpg" alt="">
+        </li>
+    </ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    
+    let $li = $('li'); 
+    $(document).scroll(ljz);
+    ljz();
+    function ljz(){
+        $li.each(function(i,e){
+            if($(e).offset().top <= $(window).innerHeight() + $(document).scrollTop() && $(e).find('img').attr('_src')){
+                $(e).find('img').attr('src', $(e).find('img').attr('_src') );
+                $(e).find('img').removeAttr('_src');
+                $(e).find('img').css({opacity:1});
+            }
+
+        });
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:200px;
+     height: 200px;
+     background: blueviolet;
+ }
+ #div2{
+     width:50px;
+     height: 50px;
+     background:salmon;
+ }
+</style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        jQ中的事件都是事件绑定，所有的事件都是基于on()
+
+        click()
+        mouseover()
+        mouseout()
+
+    */
+
+    // $(document).click(function(){
+    //     alert(1);
+    // });
+
+    /*
+        当div1绑定的时候，点一次就绑定一次div2的事件
+        点几次div1，就绑定几次div2，所以触发div2的时候会触发若干次。
+        
+        off() 解除绑定,在哪个元素上解除就在那个元素后添加。
+    */
+    $('#div1').on('click',function(){
+       console.log(111111);
+
+        $('#div2').off().click(function(){
+            alert('我是div2');
+        });
+
+    });
+
+
+</script>
+</body>
+</html>

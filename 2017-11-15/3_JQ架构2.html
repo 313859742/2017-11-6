@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script src="sizzle.js"></script>
+<script>
+    /*
+        无new化操作
+
+        因为打算在使用jQuery的时候不在外面new，我们使用了
+        在jQuery函数内部new，但是出现了一个问题，递归！
+
+        问题：
+            如何才能做到既能够在内部new，又不递归？
+            如何才能做到在内部new还能使用jQuery实例化对象的方法？
+
+
+        回答：
+            只要不new jQuery本身就不会递归,
+            那么找一个炮灰来new,只要让炮灰拥有jQuery的
+            属性或者方法，是不是new 炮灰就等同于new jQuery
+    */
+
+    (function(global,factory){
+        "use strict"
+        factory(global);
+    })(typeof window !== 'undefined'?window:this,function(window,noGlobal){
+        function jQuery(selector){
+
+            return new fn(selector);
+
+        };
+        jQuery.prototype = {
+
+            constructor:jQuery,
+
+            css:function(){
+                console.log(123);
+            }
+
+        }
+
+        let fn = jQuery.prototype.paohui = function(selector){
+            
+        }
+
+        fn.prototype = jQuery.prototype;
+
+        window.$ = window.jQuery = jQuery;
+    });
+
+    function jQuery(){
+        alert(1)
+    }
+
+    // let v = new jQuery('#box');
+
+    let v = $('#box');
+
+    // console.log(jQuery);
+    v.css();
+
+
+</script>
+</body>
+</html>

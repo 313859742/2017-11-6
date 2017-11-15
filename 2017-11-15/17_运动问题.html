@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:150px;
+     height: 150px;
+     background:salmon;
+ }
+</style>
+</head>
+<body>
+    <button>按钮</button>
+    <div id="div1"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    slow","normal", or "fast"
+
+    jQ中的运动都基于 animate()
+
+    delay() 延迟
+
+    队列概念：
+        JQ中的运动都是按照队列来排列的
+
+       1,2, [3,4,5]
+
+       小技巧：
+            如果会多次触发运动，那么在运动前加 stop(true,true) 
+        2个true的时候，立即完成上次一次任务，然后开始本次任务
+  */
+
+  $('button').click(function(){
+     $('#div1').stop(true,true).toggle(500);  //宽高透明度
+  });
+
+</script>
+</body>
+</html>

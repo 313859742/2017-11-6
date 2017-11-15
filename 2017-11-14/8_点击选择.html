@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  
+  <input type="button" value="按钮">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    checked = true/false
+
+    prop:专门用来操作表单元素属性的（比如:checked）。
+    因为直接使用attr('checked')为undefined
+  */
+  $('input[type="button"]').click(()=>{
+    // console.log($('input[type="checkbox"]').attr('checked',true));
+    //$('input[type="checkbox"]').prop('checked',false);
+    
+    let inputs = $('input[type="checkbox"]');
+
+    for(var i=0;i<inputs.length;i++){
+      if(inputs.eq(i).prop('checked')){
+        inputs.eq(i).prop('checked',false);
+      }else{
+        inputs.eq(i).prop('checked',true);
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

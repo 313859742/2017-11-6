@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" value="">
+            </header>
+            <section class="main">
+                <input class="toggle-all" type="checkbox">
+                <ul class="todo-list">
+                    <!-- <li class="completed">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" checked="">
+                            <label>多多对对对</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" value="多多对对对">
+                    </li> -->
+                </ul>
+            </section>
+            <!-- <footer class="footer">
+	            <span class="todo-count">
+	            	<strong>0</strong>
+	            	<span>条未选中</span>
+	            </span>
+            </footer> -->
+        </div>
+    </section>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    let $newTodo = $('input[class="new-todo"]');
+    let $todoList = $('.todo-list');
+    let data = JSON.parse(localStorage.getItem('data')) || [
+        {
+            content:'对对对多多多',
+            checked:false,
+            id:0
+        },
+        {
+            content:'对对对多多多2',
+            checked:false,
+            id:1
+        }
+    ];
+
+    //渲染
+    render();
+    $newTodo.keyup(function(ev){
+       if(ev.keyCode == 13){
+        let v = $newTodo.val();
+        if(!v)return alert('呵呵');
+        
+        data.push({
+            content:v,
+            checked:false,
+            id: +new Date()
+        });
+
+        render();
+       }
+    });
+
+
+    //渲染
+    function render(){
+        let html = '';
+        data.forEach((e,i)=>{
+            html += `<li class="${e.checked?'completed':''}">
+                            <div class="view">
+                                <input 
+                                    class="toggle" 
+                                    type="checkbox" 
+                                    ${e.checked?'checked':''}
+                                >
+                                <label>${e.content}</label>
+                                <button class="destroy"></button>
+                            </div>
+                            <input class="edit" value="${e.content}">
+                        </li>`
+        });
+        $todoList.html(html);
+        $newTodo.val('');
+        if(data.length){
+            $('.toggle-all').prop('checked',data.every(e=>e.checked));
+        }else{
+            $('.toggle-all').prop('checked',false);
+        }
+        
+        let $toggle = $('.toggle');
+        $toggle.each(function(i,e){
+            $(e).click(function(){
+                if( $(e).prop('checked') ){
+                    data[$(e).index('.toggle')].checked = true;
+                }else{
+                    data[$(e).index('.toggle')].checked = false;
+                }
+                $(e).closest('li')[0].className = ($(e).prop('checked')?'completed':'');
+               //console.log($(e).prop('checked'))
+                localStorage.setItem('data',JSON.stringify(data))
+                $('.toggle-all').prop('checked',data.every(e=>e.checked));
+            });
+        });
+
+        //全选
+        $('.toggle-all').click(function(){
+            $toggle.prop('checked',$(this).prop('checked'));
+            $('li').each((i,e)=>{
+                e.className = ($(this).prop('checked')?'completed':'');
+            });
+            data.forEach((e)=>{
+                e.checked = $(this).prop('checked')
+            })
+            localStorage.setItem('data',JSON.stringify(data));
+            //console.log(data);
+        });
+
+        //删除
+        $('.destroy').click(function(){
+            data = data.filter((e,i)=>{
+                return i != $(this).index('.destroy')
+            });
+           localStorage.setItem('data',JSON.stringify(data))
+           render();
+        });
+    }
+
+</script>
+</body> 
+</html>

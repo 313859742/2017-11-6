@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt"/>
+    <ul id="ul">
+        <li></li>
+    </ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        创建元素：
+            $('标签')
+        
+        插入元素：
+            append()  最后添加
+
+            插入什么东西.insertBefore.要插入到哪个前面
+
+            父级.prepend(插入的元素) -> 结果添加到第一个上
+
+        删除：
+            $(xx).remove();
+    */
+    $('#txt').keyup(function(ev){
+        if(ev.keyCode == 13){
+            let $li = $(`<li>${$('#txt').val()}</li>`);
+            //$('ul').append($li);
+            // $li.insertBefore('li:first');
+            $('ul').prepend($li);
+            $('#txt').val('');
+        }
+    });
+
+    $('ul').on('click','li',function(){
+        $(this).remove();
+    });
+
+   
+
+
+
+</script>
+</body>
+</html>

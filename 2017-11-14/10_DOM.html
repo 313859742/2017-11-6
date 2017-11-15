@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <ul>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    DOM:
+      文档对象模型
+
+      根据document提供的API，赋予开发者操作页面的能力。
+
+      第一个元素  first()
+      最后一个元素  last()
+      兄弟元素 
+        next
+        prev
+        siblings
+      增、删、改、查
+      父级
+      子级
+  */
+
+  // $('li').last().css('background','red') //first()
+  //$('li').eq(0).css('background','red');
+
+  // $('li').eq(0).next().css('background','red')
+  // $('li').last().prev().css('background','green');
+  $('li').eq(0).siblings().css('background','yellow');
+
+</script>
+</body>
+</html>

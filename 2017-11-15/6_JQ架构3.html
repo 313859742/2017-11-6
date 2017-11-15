@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script src="sizzle.js"></script>
+<script>
+    
+    (function(global,factory){
+        factory(global);
+    })(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+
+        function jQuery(selector){
+            return new jQuery.init.fn(selector);
+        }
+
+        jQuery.init = jQuery.prototype = {
+
+            constructor:jQuery,
+
+            isObj:function(that){
+                return Object.prototype.toString.call(that) === '[object Object]';
+            },
+            css:function(){
+                /*
+                    'width' -> 读取
+                    {} ->  批量设置
+                */
+               let arr2 = Object.values(this); 
+               if(arguments.length === 1){
+                   if(typeof arguments[0] === 'string'){
+                    //    console.log(this);
+                     return getComputedStyle(this[0])[arguments[0]];
+                   }else if( this.isObj(arguments[0]) ){
+                        
+                       arr2.forEach((e,i)=>{
+                         for(var attr in arguments[0]){
+                            e.style[attr] = arguments[0][attr];
+                         }
+                       });
+                   }
+               }else if(arguments.length === 2){
+    
+                    arr2.forEach((e,i)=>{
+                        e.style[arguments[0]] = arguments[1];
+                    });
+                 
+               }
+
+               return this;
+            }
+        }
+
+        jQuery.init.fn = function(selector){
+            var arr = Sizzle(selector);
+            //把获取的元素传给了对象
+            for(var i=0;i<arr.length;i++){
+                this[i] = arr[i];
+            }
+            // console.log(arr);
+        }
+
+        jQuery.init.fn.prototype = jQuery.prototype;
+
+
+        window.$ = window.jQuery = jQuery;
+
+    });
+
+    /*
+        1.
+            $()能够为选择器（集成sizzle）
+        2.
+            css:
+                1个参数
+                    'width' -> 读取
+                    {} ->  批量设置
+
+
+                2个参数
+                    'background','red' -> 设置
+    */
+
+    // console.log($('#box').css('width'));
+
+    // $('li').css({
+    //     background:'red'
+    // });
+
+    $('li').css('background','yellow').css({
+        border:'1px solid #000'
+    });
+   
+
+</script>
+</body>
+</html>

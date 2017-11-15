@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    $('#box').css({
+        width:100,
+        height:100,
+        background:'red'
+    }).click(function(){
+        $('#box').animate({
+            width:'400px',
+            opacity:0
+        }).animate({
+            height:'400px',
+            opacity:1
+        })
+    })
+
+    $(document).click(()=>{
+        $.ajax({
+            url:'https://api.douban.com/v2/movie/search',
+            data:{
+                start:0,
+                q:'雷神'
+            },
+            dataType:'jsonp',
+            success:function(data){
+                console.log(data);
+            }
+        })
+    })
+
+
+    /*
+        JSX语法：
+            单标签闭合
+            className
+            {
+                [](扩展)
+                还可以运算
+                Map
+            }
+            顶层只能有一个标签
+            组件名首写大写
+        
+        onClick onChange...
+        this.state = {}
+        this.setState({},()=>{})
+        生命周期
+
+
+        JavaScript
+        jQuery
+            吃的少干的多
+            jQuery是一个快速，小巧，功能丰富的JavaScript库。它使诸如HTML文档遍历和操纵，事件处理，动画和Ajax等事情变得简单得多，而且易于使用的API可以在多种浏览器中使用。结合多功能性和可扩展性，jQuery改变了数百万人写JavaScript的方式。
+            1.72兼容所有浏览器的
+
+        http://www.jquery123.com/
+    */
+</script>
+</body>
+</html>

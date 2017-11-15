@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮">
+     <div>
+        <input type="checkbox">
+        <span>001</span>
+     </div>
+     <div>
+        <input type="checkbox">
+        <span>002</span>
+     </div>
+     <div>
+        <input type="checkbox">
+        <span>003</span>
+     </div>
+     <div>
+        <input type="checkbox">
+        <span>004</span>
+     </div>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  let arr = [];
+  $('input[type="button"]').click(()=>{
+    // for(var i=0;i<$('input:checked').length;i++){
+    //   arr.push($('input:checked').eq(i).next().html())
+    // }
+    // console.log(arr);
+
+    //$('input:checked')[0].style.width = '100px';
+
+    // ***重点***
+    // console.log($('input:checked').eq(0))//JQ对象
+    //console.log($('input:checked')[0])//原生对象
+
+    /*
+      如果你要使用jq的方法，那么必须保证，前面那个对象是JQ对象
+
+      JQ对象转原生对象使用下标即可
+      原生对象转JQ对象用$()包一下即可
+
+    */
+
+    let i2 = document.getElementsByTagName('input')[1];
+    
+    $(i2).css({
+      width:100,
+      height:100
+    })
+
+    // i2.next().html();
+
+  });
+
+
+  
+</script>
+</body>
+</html>

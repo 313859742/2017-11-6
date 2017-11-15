@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}    
+</style>
+</head>
+<body>
+    <div id="app"></div>
+    <ul>
+        <li class="li1 li2">1</li>
+        <li class="li2 li1">2</li>
+        <li class="li1-2">3</li>
+        <li class="li1">4</li>
+        <li>5</li>
+    </ul>
+    <input type="text">
+    <input type="button" value="按钮">
+    <input type="radio">
+    <input type="checkbox">
+    <input type="button" value="按钮2">
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        只要你会css，就会JQ的选择器
+        $();
+        fn();
+
+        function $(){}
+
+        # -> id选择器
+        . -> class选择器
+
+
+    */
+    // console.log($('#box'))
+    // console.log($('.li1'))
+
+    // console.log($('input[type="button"]')); //属性选择器
+
+    // console.log($('input[type!="button"]')); //属性过滤选择器
+
+    // $('li[class^="li1"]').css('background','red');//li1 || li1-开头的
+
+    // $('li[class$="li1"]').css('background','red');
+
+
+</script>
+</body>
+</html>

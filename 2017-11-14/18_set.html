@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let arr = ['1',2,2,3,3,4,54,32,2,3,4,6,2,1,2,1];
+
+    // for(var i=0;i<arr.length;i++){
+    //     for(var j=i+1;j<arr.length;j++){
+    //         if(arr[i] == arr[j]){
+    //             arr.splice(j,1);
+    //             j--;
+    //         }
+    //     }
+    // }
+
+    // let obj = {};
+    // let arr2 = [];
+    // for(var i=0;i<arr.length;i++){
+    //     if(!obj[typeof arr[i] + arr[i]]){
+    //         obj[typeof arr[i] + arr[i]] = 1;
+    //         arr2.push(arr[i]);
+    //     }
+    // }
+    // console.log(arr2);
+
+    /*
+        Set():
+            里面的内容不能有重复的
+    */
+    console.log([... new Set(arr)])
+   // console.log([...new Set(arr)]);
+
+</script>
+</body>
+</html>

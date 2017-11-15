@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+
+
+</style>
+</head>
+<body>
+  <ul>
+    <li class="a">
+      <p>1</p>
+      <ul >
+        <li>
+          <p id="p2" class="a">2</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    closest():
+      closest会首先检查当前元素是否匹配，如果匹配则直接返回元素本身
+      如果不匹配则向上查找父元素，一层一层往上，直到找到匹配选择器的元素。
+      如果什么都没找到则返回一个空的jQuery对象。
+  */
+  $('#p2').closest('.a').css('background','red');
+</script>
+</body>
+</html>

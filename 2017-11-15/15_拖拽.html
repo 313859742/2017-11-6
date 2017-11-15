@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:150px;
+     height: 150px;
+     background:salmon;
+     position: absolute;
+     top:0;
+     left:0;
+ }
+</style>
+</head>
+<body>
+        dsadsadsadsadsadsadsadsadsadsa
+    <div id="div1"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  
+    $('#div1').mousedown(function(ev){
+        // console.log(ev);
+        let disX = ev.clientX - $(this).offset().left;
+        let disY = ev.clientY - $(this).offset().top;
+
+        $(document).mousemove(function(ev){
+            $('#div1').css({
+                left : ev.clientX - disX,
+                top : ev.clientY - disY
+            });
+        });
+
+        $(document).mouseup(function(){
+            $(document).off();
+        });
+        return false;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+ #div1{
+     width:200px;
+     height: 200px;
+     background: blueviolet;
+ }
+ #div2{
+     width:50px;
+     height: 50px;
+     background:salmon;
+ }
+</style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        jQ中的事件都是事件绑定，所有的事件都是基于on()
+
+        click()
+        mouseover()
+        mouseout()
+
+    */
+
+   
+    // $('#div1,#div2').on('click',function(){
+    //    alert(1);
+    // });
+
+    let data = {foo:'hehe'};
+
+    $('#div1').on('click.hehe',data,function(ev){
+        console.log(ev.data);
+    });
+
+    $('#div1').on('click.点击',function(ev){
+        console.log(11234567);
+    });
+
+    $('#div2').on('click',function(ev){
+        $('#div1').trigger('click.hehe');
+    });
+
+    // $('#div2').on('click',function(ev){
+    //     $('#div1').off('click.点击');
+    // });
+
+
+
+
+
+</script>
+</body>
+</html>
