@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+  background: yellow;
+}
+#app div{
+  border: 1px solid #000;
+  height: 50px;
+  width:100px;
+  display: none;
+}
+#app div.show{
+  display: block;
+}
+
+</style>
+</head>
+<body>
+    
+  <div id="app">
+      
+  </div>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="tabs.js"></script>
+<script>
+  
+  $('#app').tabs({
+    btns:['miaov','miaov2','miaov3'],
+    contents:['1','2','3'],
+    ani:true
+  });
+  
+
+</script>
+</body>
+</html>

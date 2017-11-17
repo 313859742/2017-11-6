@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+        #div2{
+            width:100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <div id="div2"></div>
+<script>
+    /*
+        touchstart 、touchmove、touchend是一组事件
+        如果在一个元素上触发了touchstart，那么只要不touchend
+        那么事件都作用在这个元素上
+    */
+    div.addEventListener('touchstart',start);
+    div.addEventListener('touchmove',move);
+    div.addEventListener('touchend',end);
+
+    function start(){
+        console.log('按下');
+    }
+    function move(){
+        console.log('move');
+    }
+    function end(){
+        console.log('end');
+    }
+
+    div2.addEventListener('touchend',function(){
+        console.log('end222');
+    });
+
+    // div.onmousedown = function(){
+    //     console.log('down');
+    // }
+    // div.onmouseup = function(){
+    //     console.log('up');
+    // }
+    // div2.onmouseup = function(){
+    //     console.log('up2');
+    // }
+
+
+
+</script>
+</body>
+
+</html>

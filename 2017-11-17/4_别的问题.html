@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height: 100px;
+            background: red;
+            opacity: .3;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 2;
+        }
+        #a{
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+        }
+        #div2{
+            width:3000px;
+            height: 100px;
+            background: yellow;
+        }
+        body,html{
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <a href="http://www.miaov.com" id="a">跳转miaov</a>
+    <div id="div2" >
+        3213213hejkdhjkdh
+    </div>
+    <input type="text" id="txt">
+<script>
+    
+    /*
+        禁止缩放
+        橡皮筋效果
+        阻止默认的选中框
+
+        如果在document上阻止了默认行为，影响了正常的功能，
+        那么在元素本身加上阻止冒泡就可以解决。
+
+    */    
+    
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    });
+    function changan(el){
+        console.log(el.innerHTML)
+    }
+   
+    div.addEventListener('touchstart',start);
+
+    function start(){
+        this.style.display = 'none';
+    }
+   
+    div2.addEventListener('touchstart',function(ev){
+        ev.stopPropagation();
+    })
+    div2.addEventListener('touchend',function(){
+        clearTimeout(timer);
+    });
+    //加了ev.stopPropagation()之后就可以正常使用input框了
+    txt.addEventListener('touchstart',function(ev){
+        ev.stopPropagation();
+    });
+
+
+</script>
+</body>
+
+</html>

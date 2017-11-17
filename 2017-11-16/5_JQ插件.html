@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="t" cols="30" rows="10"></textarea>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  /*
+    $.extend() / $.fn.extend();
+      除了可以拷贝，还是编写插件的接口
+
+      $('#xx')
+      $.
+  */
+
+  let str = '   abcdefg   ';
+
+  // $.extend({
+
+  //   trimRight:function(str){
+  //     return str.replace(/\s+$/,'');
+  //   },
+
+  //   scrollH:function(str){
+  //     return $(str)[0].scrollHeight;
+  //   }
+
+
+  // });
+  // // console.log(str);
+  // console.log($.trimRight(str))//   abcdefg;
+
+  //$(xx).ss();
+  // $.fn.scrollH = function(){
+  //   console.log(1);
+  // }
+
+  $.fn.extend({
+    scrollH:function(){
+      return this[0].scrollHeight;
+    }
+  })
+
+
+  $(document).click(function(){
+    // console.log($.scrollH('#t'));
+    console.log($('#t').scrollH());
+  })
+
+
+</script>
+</body>
+</html>

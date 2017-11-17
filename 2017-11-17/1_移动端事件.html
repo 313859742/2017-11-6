@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        /*
+                        1.基础要好  prototype
+                        2.学习能力要强
+                        3.人品、态度要好
+                        4.抗压能力强
+                    */
+
+        /*
+                难点在适配上
+                    事件是不一样的
+                
+                手机端的3大事件:
+                    ontouchstart   按下
+                    ontouchmove    移动
+                    ontouchend     抬起
+        
+                注意：
+                    在浏览器中调试的时候有可能on的方式不生效，但是真机上又能显示。
+        
+                    使用事件绑定的方式去写问题就解决了。
+        
+                    PC上的事件比移动端的事件要慢一些大约在300ms左右
+
+                在移动端上面就不要使用pc事件了，统一都用touch事件    
+                        
+            */
+
+        // document.ontouchstart = function(){
+        //     alert(123);
+        // }
+
+        // document.addEventListener('touchstart',function(){
+        //     alert(1);
+        // })
+        // document.addEventListener('touchmove',function(){
+        //     console.log('move');
+        // });
+
+        document.addEventListener('touchend', function () {
+            // console.time('计时器')
+            console.log('end');
+        });
+        document.onclick = function () {
+            // console.timeEnd('计时器')
+            console.log('click')
+        }
+    </script>
+</body>
+
+</html>

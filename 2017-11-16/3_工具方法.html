@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        $('#box').css();
+
+        $.ajax()    $.  工具方法 除了JQ对象可以使用，原生的也能使用
+
+        $.extend(); -> Object.assgin();
+            从右往左赋值拷贝
+
+            如果第一个参数为true -> 深度克隆
+
+            
+
+
+
+    */
+    
+    let arr = [1,2,3,4];
+    // let obj = {name:'hh',job:'web'};
+
+    // $.each(obj,function(i,e){  //for arr or obj
+    //     console.log(e);
+    // });
+
+    // console.log($.isArray(arr));
+
+
+
+    let obj = {name:'hh',job:'web'};
+    let obj2 = {arr:[1,2,3,4]}
+    // let obj3 = $.extend(obj,obj2);//浅拷贝
+    let obj3 = $.extend(true,obj,obj2);//深拷贝
+    
+    obj3.arr.push(5);
+
+    console.log(obj2);
+
+
+
+
+
+
+</script>
+</body>
+</html>

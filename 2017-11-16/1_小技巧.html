@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div"></div>
+    <div id="div2"></div>
+    <textarea name="" id="t" cols="30" rows="10"></textarea>
+    <button>按钮</button>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        如果使用了jQ,那么整个文件尽量都用jQ,jQ没有想要的方法才用原生
+
+            get(num) === [num]
+
+
+    */
+
+    // let div = document.getElementById('div');
+    
+    // div.style.width = '200px';
+
+    // $('#div2').css('width','100px');
+
+    $('button').click(function(){
+        console.log($('#t')[0].scrollHeight);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+} 
+body,html{
+    overflow: hidden;
+}
+#box{
+    position: relative;
+    top:0;
+    left:0;
+}
+#ol{
+    position: fixed;
+    top:50%;
+    right:0;
+    margin-top:-100px;
+    list-style: none;
+}
+#ol li{
+    width:20px;
+    height: 20px;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    background: brown;
+    margin: 8px;
+    cursor: pointer;
+}
+#ol li.active{
+    background: #fff;
+    color:brown;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <ol id="ol">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    let arr = ['skyblue','pink','yellow','green','salmon'];
+
+    let iW = $(window).innerWidth();
+    let iH = $(window).innerHeight();
+
+    arr.forEach((e,i)=>{
+        $('#box').append($(`<div style="width:${iW}px;height:${iH}px;background:${e};"></div>`))
+    });
+
+    let num = 0;
+    let onOff = true;
+
+    function daodingle(){
+        alert('到顶了就触发了');
+    }
+
+    document.onmousewheel = function(ev){
+        if(onOff){
+            onOff = false;
+            if(ev.wheelDelta > 0){ //上
+                num --;
+                if(num<0){
+                    num=0;
+                    daodingle();
+                };
+            }else{
+                //下
+                num ++;
+                if(num>arr.length-1)num=arr.length-1;
+            }
+            $('#box').animate({
+                top:-num * iH
+            },800,function(){
+                onOff = true;
+            });
+
+            $('#ol').find('li').eq(num).addClass('active').siblings('li').removeClass('active');
+        }
+
+    }
+
+    $('#ol').find('li').click(function(){
+        $(this).addClass('active').siblings('li').removeClass('active');
+        num =  $(this).index();
+        $('#box').animate({
+            top:- $(this).index() * iH
+        },800);
+    });
+    
+    
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height: 100px;
+            background: red;
+            opacity: .3;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 2;
+        }
+        #a{
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <a href="http://www.miaov.com" id="a">跳转miaov</a>
+    <!-- <div id="a" data-href="http://www.miaov.com">跳转miaov</div> -->
+<script>
+    
+    /*
+        在点击上层元素的时候，如果下层元素为焦点元素（a,input）
+        并且尝试让上层元素消失或者飘逸，那么这个时候就触发下层元素的
+        焦点。
+        还是因为那300ms，第一次点击会记录点击的位置，方便第2次点击的时候去判断是否在规定时间内双击
+
+        解决：
+            1.下层元素不使用焦点元素,但是 a 是可以让爬虫捕捉数据的
+            不利于搜索引擎抓取关键信息
+
+            2.开个定时器，让其300ms以后再消失（“飘逸”），但是用户体验不佳，
+            用户能够明显感觉得到延迟。
+
+            3.先把阻止焦点行为（更推荐使用这种解决方案）
+                document.addEventListener('touchend',function(ev){
+                    ev.preventDefault();
+                });
+
+                在点击焦点元素的时候用js去跳转页面。
+
+    */
+    //阻止焦点事件
+    document.addEventListener('touchend',function(ev){
+        ev.preventDefault();
+    });
+
+    div.addEventListener('touchstart',start);
+    div.addEventListener('touchend',end);
+
+    function start(){
+        console.log('按下');
+    }
+    
+    function end(){
+        // setTimeout(()=>{
+        //     this.style.display = 'none';
+        // });
+        this.style.display = 'none';
+    }
+
+    a.addEventListener('touchend',function(ev){
+        window.location.href = this.href;
+    });
+
+
+</script>
+</body>
+
+</html>

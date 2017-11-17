@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*textarea{*/
+            /*width:200px;*/
+            /*height:300px;*/
+        /*}*/
+        .active{
+            background-color:red;
+        }
+        #box div{
+            border: 1px solid #000;
+            height: 50px;
+            width:100px;
+            display: none;
+        }
+        #box div.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!--<input type="button" value="按钮一" class="active">-->
+        <!--<input type="button" value="按钮二">-->
+        <!--<input type="button" value="按钮三">-->
+        <!--<div class="show">1111111111111111111</div>-->
+        <!--<div>222222222222222222</div>-->
+        <!--<div>3333333333333333</div>-->
+    </div>
+    <!--<textarea id="t"></textarea>-->
+    <script src="jquery-3.2.1.min.js"></script>
+<script>
+//第一步定义一个tabs，
+$.fn.extend({
+    tabs:function (opt) {
+        var t=new Tab(this);
+        t.init(opt);
+    }
+});
+//第二步创建一个类
+function Tab(that) {
+    this.that= that;
+    this.opts = {
+        buts : ['体育','娱乐','游戏','新闻'],
+        contents : ['100米飞跃','吃饭','睡觉','打豆豆']
+    }
+}
+//写方法
+$.extend(Tab.prototype,{
+    init : function (opt) {
+        this.createBtns();  // 按钮方法
+        this.createDivs();  // 内容方法
+        this.changeBtn();  // 点击事件
+    },
+    /************************渲染按钮*****************************/
+    createBtns:function () {
+        this.opts.buts.forEach((e,i)=>{
+            this.that.append($(`<button class="${i==0?'active':''}">${e}</button>`));
+        });
+    },
+    /************************渲染div*****************************/
+    createDivs : function () {
+        this.opts.contents.forEach((e,i)=>{
+            this.that.append($(`<div class="${i == 0 ? 'show' : ''}">${e}</div>`));
+        })
+    },
+    /***********************添加事件******************************/
+    changeBtn:function () {
+        var btn = this.that.find('button');
+        var div= this.that.find('div');
+        btn.on('click',function () {
+            $(this).addClass('active').siblings('button').removeClass('active');
+//            div.eq($(this).index('button')).addClass('show').siblings('div').removeClass('show');
+            div.eq($(this).index('button')).siblings('div').removeClass('show');
+        })
+    }
+})
+
+$('#box').tabs({
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    $.fn.extend({
+//        trimHeight : function () {
+//            return $(str)[0].scrollHeight();
+//        }
+//    });
+//    $(document).click(function () {
+//        console.log( $('#t').trimHeight() );
+//    })
+</script>
+</body>
+</html>
