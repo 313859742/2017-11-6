@@ -41,7 +41,7 @@
     </div>
     <input type="text" id="txt">
 <script>
-    
+
     /*
         禁止缩放
         橡皮筋效果
@@ -50,21 +50,22 @@
         如果在document上阻止了默认行为，影响了正常的功能，
         那么在元素本身加上阻止冒泡就可以解决。
 
-    */    
-    
+    */
+
     document.addEventListener('touchstart',function(ev){
         ev.preventDefault();
     });
+
     function changan(el){
         console.log(el.innerHTML)
     }
-   
+
     div.addEventListener('touchstart',start);
 
     function start(){
         this.style.display = 'none';
     }
-   
+
     div2.addEventListener('touchstart',function(ev){
         ev.stopPropagation();
     })

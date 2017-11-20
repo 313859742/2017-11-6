@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <button class="active">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+<script>
+    let btns = document.querySelectorAll('button');
+    alert(1);
+    let disX = 0;
+    let disY = 0;
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    })
+
+    for(let i=0;i<btns.length;i++){
+        btns[i].addEventListener('touchstart',start);
+        btns[i].addEventListener('touchend',end);
+    }
+    function start(ev){
+        disX = ev.targetTouches[0].pageX;
+        disY = ev.targetTouches[0].pageY
+    }
+    function end(ev){
+        // alert(1)
+        // console.log(ev.changedTouches[0].pageX)
+        let  disXend = ev.changedTouches[0].pageX;
+        let disYend = ev.changedTouches[0].pageY
+        if(Math.abs(disXend - disX) > 50 || Math.abs(disYend - disY) > 50){
+            return;
+        }
+        for(var k=0;k<btns.length;k++){
+            btns[k].className = '';
+        }
+        this.className = 'active';
+    }
+
+</script>
+</body>
+</html>
