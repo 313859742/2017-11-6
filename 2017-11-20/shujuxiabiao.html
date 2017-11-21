@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li @click = "getIndex(index,$event)"
+                v-for="value,index in list">{{ value }}+ {{ index }}</li>
+            <!--<li>33</li>-->
+            <!--<li>44</li>-->
+        </ul>
+    </div>
+<script>
+    new Vue({
+        el : '#app',
+        data : {
+            list : ['b','c','d']
+        },
+        methods : {
+            getIndex(i,ev){
+                console.log(i);
+                console.log(ev);
+                alert(i);
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app div{
+            width:200px;
+            height:200px;
+            border:1px solid red;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click = "isShow = !isShow">显示/隐藏元素</button>
+        <button v-on:click = "chang">点击显示/隐藏元素</button>
+        <div v-show="isShow">
+            被操做的元素
+        </div>
+    </div>
+<script>
+    new Vue({
+        el : "#app",
+        data:{  // 数据状态
+            isShow : true  // 默认是显示
+        },
+        methods : {
+            chang:function () {
+                this.isShow = ! this.isShow
+            }
+        }
+    });
+</script>
+</body>
+</html>

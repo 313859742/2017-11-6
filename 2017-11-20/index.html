@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app" >
+        <!--{{  message }}-->
+        <!--hellow-->
+        <ul id="list">
+            <li :title="tip+ key + '个'" v-for="item,key in list">
+               {{ item }}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        let arr = ['miaov' , 'ketang'];
+        let vm = new Vue({
+            el : '#app',
+            data : {
+               list : arr,
+                tip : '我是悬停提示，我是第'
+            }
+
+        })
+        document.onclick = function () {
+            vm.message = 'abc'
+        }
+//        console.log(vm)
+    </script>
+</body>
+</html>

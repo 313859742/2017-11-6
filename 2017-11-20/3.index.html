@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--点击改变内容值-->
+        <button v-on:click="message='miaov1'">点击改变数据值1</button>
+        <button v-on:click="chang">点击改变数据值2</button>
+        <button v-on:click="isShow = ! isShow">点击显示/隐藏</button>
+        <div>
+            dddd
+        </div>
+        <!--将内容渲染到页面上-->
+        {{ message }}
+        <!--<span>hellow.测试隐藏</span>-->
+    </div>
+    <script>
+        let vm = new Vue({
+            el : "#app",
+            data:{  // 用来渲染页面内容
+                message : 'hello',
+                isShow : true
+            },
+            methods:{
+                chang:function () {
+                    this.message = 'miaov2'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    需求：求出年龄的总和+体重的总和
+    let arr = [
+        {
+            age: 20,
+            weight:100
+         },
+        {
+            age: 30,
+            weight:110
+        },
+        {
+            age: 40,
+            weight:120
+        }
+    ];
+
+//    let zong=arr.reduce(function (item1,item2) {
+//        return{
+//            age: item1.age+item2.age,
+//            weight : item1.weight+item2.weight
+//        }
+//    });
+
+let zong=arr.reduce(function (item1,item2) {
+    return {
+        age: item1.age+item2.age,
+        weight: item1.weight+item2.weight
+    }
+},{age:100,weight:100});
+    console.log(zong)
+//    let ages=0;
+//    let weight=0;
+//   arr.forEach((item)=>{
+//      ages +=item.age;
+//      weight += item.weight;
+//   });
+//    console.log(ages,weight);
+</script>
+</body>
+</html>

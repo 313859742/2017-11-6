@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            overflow: hidden;
+            border:1px solid #000;
+            margin:50px auto;
+        }
+        dl{
+            margin:0;
+            border-bottom:5px solid #fff;
+        }
+        dt h2{
+            margin:0;
+            line-height:40px;
+            background-color:#333;
+            color:#fff;
+            padding:10px;
+        }
+        dd{
+            margin:0;
+            display:none;
+        }
+        dd a{
+            display: block;
+            line-height:40px;
+            padding:5px;
+            text-indent: 2em;
+            border-bottom:1px solid #333;
+            background-color:#f3f3f3;
+            margin:0;
+            cursor:pointer;
+        }
+        .show{
+            display: block;
+        }
+        .red{
+            background-color:red;
+        }
+    </style>
+   <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <dl v-for="item,i in list" >
+        <dt @click="chang(i)"
+        ><h2 :class="{red:i === showIndex}">{{ item }}</h2></dt>
+        <dd  :class="{show : i === showIndex}">
+            <a href="javascript:;" v-for="item,i in list">菜单1.{{i+1}}</a>
+        </dd>
+    </dl>
+</div>
+<script>
+    var arr =['菜单1','菜单2', '菜单3'];
+    new Vue({
+        el:'#app',
+        data: {
+            list: arr,
+            showIndex: null // 默认收起
+        },
+        methods :{
+            chang(index){  // 如果点击的这个相等，则关闭，否则则展开
+                this.showIndex =  this.showIndex == index ?  null : index;
+           }
+        }
+    })
+</script>
+</body>
+</html>
