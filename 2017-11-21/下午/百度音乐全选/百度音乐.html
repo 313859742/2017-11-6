@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.list-body li:nth-child(even) {
+				background: yellow;
+			}
+			.list-body li:nth-child(odd) {
+				background: #fff;
+			}
+			.list-body li:hover {
+				background: green;
+			}
+			.list-body li.checkedColor {
+				background: green;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/baidu.css" />
+	</head>
+
+	<body>
+		<div class="wrap" id="app">
+			<div class="baidu">
+				<ul class="list list-head">
+					<li>
+						<div>
+							<input type="checkbox" v-model="select"/>全选
+						</div>
+						<span>歌单</span>
+						<span>歌手</span>
+						<span>专辑</span>
+					</li>
+				</ul>
+				<ul class="list list-body">
+					<li class="" v-for="item,key in list" :class="{checkedColor:item.checked}" >
+						<div><input type="checkbox" v-model="item.checked" ></div>
+						<span>{{ item.song }}</span>
+						<span>{{ item.name }}</span>
+						<span>{{ item.album }}</span>
+					</li>
+				</ul>
+				<div class="select">
+					<span class="selectAll">
+						<span>统计：</span>
+					</span>
+					<div class="others">
+						<span><em></em>歌手有{{ list.length }}位</span>
+						<span><em></em >专辑有{{ total }}张</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../vue.js"></script>
+		<script>
+			let data = [
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋1',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '王杰',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋2',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				}
+			];
+		new Vue({
+			el : '#app',
+			data: {
+			    list:data,
+                showIndex : null
+			},
+			methods:{
+
+			},
+            computed:{
+                total(){
+                  let vm =  this.list.reduce(function (item1,item2) {
+                        return item1 +Number(item2.album);
+					},0);
+					return vm;
+				},
+                select:{
+                    get(){
+                        let newArr = this.list.filter(function (item){
+                            return item.checked
+                        });
+                        return newArr.length === this.list.length;
+                    },
+                    set(newValue){
+                        this.list.forEach(function (item){
+                            item.checked = newValue;
+                        })
+                    }
+				}
+ 			}
+		});
+		</script>
+	</body>
+
+</html>
