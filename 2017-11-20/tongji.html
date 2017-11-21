@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    姓名：<input type="text" v-model="names">
+    年龄： <input type="text" v-model="ages">
+    <input type="button" value="添加" @click="addList">
+    <ul>
+        <li v-for="item,i in users">姓名：{{ item.name }}，年龄：{{ item.age}}</li>
+    </ul>
+    <p>以上所有人的年龄总和是{{totel}}岁</p>
+</div>
+<script>
+    let data = [
+        {
+
+            'name': 'leo',
+            'age' : 30
+        },
+        {
+            'name': 'leo',
+            'age' : 30
+        },
+        {
+            'name': 'leo',
+            'age' : 30
+        }
+    ];
+    new Vue({
+        el : '#app',
+        data:{
+            users:data,
+            ages:'',
+            names: ''
+        },
+        computed:{
+            totel(){
+                let vm =this.users.reduce(function (item1,item2) {
+                    return item1+ Number(item2.age); //或者parseIne()==>字符串转数字
+                },0);
+                return vm;
+            }
+        },
+        methods : {
+            addList(ev){
+                this.users.push(
+                    {
+                        'name':this.names,
+                        'age' : this.ages
+                        }
+                    );
+                this.name = '';
+                this.ages='';
+            }
+        }
+    })
+</script>
+</body>
+</html>

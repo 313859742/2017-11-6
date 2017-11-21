@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://39.106.75.157/exercise/flygame/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title></title>
+		<style>
+			
+			body{
+				margin: 0;
+				background-color: #0E3757;
+			}
+			.box{
+				position: relative;
+				width: 800px;
+				height: 900px;
+				background: url(img/bg.png);
+				margin: 40px auto 0;
+			}
+			.score{
+				position: absolute;
+				width: 80px;
+				text-align: center;
+				top: 10px;
+				left: 10px;
+				color: #fff;
+			}
+			.score span{
+				display: block;
+				color: red;
+			}
+			.h-score{
+				position: absolute;
+				width: 80px;
+				text-align: center;
+				top: 10px;
+				right: 40px;
+				color: #fff;
+			}
+			.h-score span{
+				display: block;
+				color: red;
+			}
+			.life{
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+			}
+			.life span{
+				display: inline-block;
+				width: 39px;
+				height: 55px;
+				margin: 5px;
+				background: url(img/user.png) no-repeat center center ;
+			}
+			.game{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			.hostile{
+				position: absolute;
+				top: 20px;
+				left: 100px;
+				width: 600px;
+				height: 300px;
+			}
+			.hostile span{
+				position: absolute;
+				width: 33px;
+				height: 21px;
+				background-repeat: no-repeat;
+			}
+			.user{
+				display: none;
+				position: absolute;
+				bottom: 50px;
+				left: 380px;
+				width: 39px;
+				height: 55px;
+				background: url(img/user.png) no-repeat center center;
+			}
+			.bullet{
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				width: 3px;
+				height: 6px;
+				background-color: #fff;
+				border-radius: 4px;
+			}
+		</style>
+		<script src="./39.106.75.157_files/map.js.下载"></script>
+		<script src="./39.106.75.157_files/MTween.js.下载"></script>
+	</head>
+	<!--游戏盒子-->
+		<body><section class="box">
+			
+			<div class="game">
+				<div class="hostile" style="top: 70px; left: 140px;">
+					
+				<span style="top: 0px; left: 180px; background-image: url(&quot;img/hostile-s.png&quot;);"></span><span style="top: 0px; left: 360px; background-image: url(&quot;img/hostile-s.png&quot;);"></span><span style="top: 50px; left: 120px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 50px; left: 180px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 50px; left: 240px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 50px; left: 300px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 50px; left: 360px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 50px; left: 420px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 60px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 120px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 180px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 240px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 300px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 360px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 420px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 100px; left: 480px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 0px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 60px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 120px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 180px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 240px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 300px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 360px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 420px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 480px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 150px; left: 540px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 0px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 60px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 120px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 180px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 240px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 300px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 360px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 420px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 480px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 200px; left: 540px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 0px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 60px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 120px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 180px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 240px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 300px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 360px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 420px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 480px; background-image: url(&quot;img/hostile.png&quot;);"></span><span style="top: 250px; left: 540px; background-image: url(&quot;img/hostile.png&quot;);"></span></div>
+				<div class="user" style="display: block;">
+					
+				</div>
+			</div>
+			<div class="info">
+				<span class="score">
+					分数<span>
+						00
+					</span>
+				</span>
+				<span class="h-score">
+					最高分数<span>
+						1100
+					</span>
+				</span>
+				<span class="life">
+					<span></span>
+					<span></span>
+				</span>
+			</div>
+			
+		</section>
+	
+	<script>
+		//创建敌机
+		var box = document.querySelector('.hostile');
+		//关卡1
+		pass('one');
+		//阵型移动
+		hMove(box,100,1,4);
+		//创建人物//发射子弹
+		showUser(3);
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		function showUser(v){
+			var gbox = document.querySelector('.game');
+			var userF = document.querySelector('.user');
+			userF.style.display = 'block';
+			document.onkeydown = function(e){
+				//space
+				if(e.keyCode==32){
+					var span = document.createElement('span');
+					var _span = span;
+					_span.className = 'bullet';
+					_span.style.left = userF.offsetLeft+userF.offsetWidth/2+'px';
+					_span.style.top = userF.offsetTop+'px';
+					gbox.appendChild(_span);
+					var t = _span.offsetTop;
+					MTween(_span,-t,3000,'top','linear',function(){
+						gbox.removeChild(_span);
+					});
+					
+				}
+				//left
+				if(e.keyCode==37){
+					console.log(userF.left)
+					if(userF.left) return;
+					userF.left = true;
+					clearInterval(userF.lefttimer)
+					userF.lefttimer = setInterval(function(){
+						console.log(1)
+						userF.style.left = userF.offsetLeft - v +'px';
+					},20)
+				};
+				//top
+				if(e.keyCode==38){
+					if(userF.top) return;
+					userF.top = true;
+					clearInterval(userF.toptimer)
+					userF.toptimer = setInterval(function(){
+						userF.style.top = userF.offsetTop - v +'px';
+					},20)
+				};
+				//right
+				if(e.keyCode==39){
+					if(userF.right) return;
+					userF.right = true;
+					clearInterval(userF.righttimer)
+					userF.righttimer = setInterval(function(){
+						userF.style.left = userF.offsetLeft + v +'px';
+					},20)
+				};
+				//left
+				if(e.keyCode==40){
+					if(userF.bottom) return;
+					userF.bottom = true;
+					clearInterval(userF.bottomtimer)
+					userF.bottomtimer = setInterval(function(){
+						userF.style.top = userF.offsetTop + v +'px';
+					},20)
+				};
+				
+			};
+			document.onkeyup = function(e){
+				if(e.keyCode==37){
+					clearInterval(userF.lefttimer);
+					userF.left = false;
+				};
+				if(e.keyCode==38){
+					clearInterval(userF.toptimer);
+					userF.top = false;
+				};
+				if(e.keyCode==39){
+					clearInterval(userF.righttimer);
+					userF.right = false;
+				};
+				if(e.keyCode==40){
+					clearInterval(userF.bottomtimer);
+					userF.bottom = false;
+				}
+			}
+		}
+		
+		
+		function crash(obj){
+			var flys = box.getElementsByTagName('span');
+			var l= obj.offsetLeft;
+			var t = obj.offsetTop;
+			var r = obj.offsetLeft+obj.offsetWidth;
+			var b = obj.offsetTop + obj.offsetHeight;
+			for (var i = 0; i < flys.length; i++) {
+				var L = flys[i].offsetLeft + box.offsetLeft;
+				var T = flys[i].offsetTop + box.offsetTop;
+				var R = L + flys[i].offsetWidth;
+				var B = T + flys[i].offsetHeight;
+				if(l<R && r >L && t<B && b>T ){
+					box.removeChild(flys[i]);
+					obj.parentElement.removeChild(obj);
+					clearInterval(obj.timer);
+				}
+			}
+		}
+		
+		
+		
+		function hMove(obj,time,t,l){
+			obj.timer = setInterval(function(){
+				obj.style.top = obj.offsetTop + t +'px';
+				obj.style.left = obj.offsetLeft + l + 'px';
+				if(obj.offsetLeft>=220){
+					obj.style.left = '220px';
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						obj.style.top = obj.offsetTop + t +'px';
+						obj.style.left = obj.offsetLeft - l + 'px';
+						if(obj.offsetLeft<=100){
+							obj.style.left = '100px';
+							clearInterval(obj.timer);
+							obj.timer = setInterval(function(){
+								obj.style.top = obj.offsetTop -t +'px';
+								obj.style.left = obj.offsetLeft - l + 'px';
+								if(obj.offsetLeft<=10){
+									obj.style.left = '10px';
+									clearInterval(obj.timer);
+									obj.timer = setInterval(function(){
+										obj.style.top = obj.offsetTop -t +'px';
+										obj.style.left = obj.offsetLeft + l + 'px';
+										if(obj.offsetLeft>=100){
+											obj.style.left = '100px';
+											clearInterval(obj.timer);
+											hMove(obj,time,t,l);
+										}
+									},time);
+								}
+							},time);
+						}
+					},time);
+				}
+			},time);
+		}
+		
+		
+		
+		function pass(pass){
+			for (var i = 0; i < map.one.length; i++) {
+			var t = parseInt(i/10);
+			var left = i%10;
+			switch(map[pass][i]){
+				case 1:
+					var span = document.createElement('span');
+					span.style.top = t*50 + 'px';
+					span.style.left = left * 60+ 'px';
+					span.style.backgroundImage = 'url(img/hostile-s.png)'
+					box.appendChild(span);
+					break;
+				case 2:
+					var span = document.createElement('span');
+					span.style.top = t *50 + 'px';
+					span.style.left = left *60 + 'px';
+					span.style.backgroundImage = 'url(img/hostile.png)';
+					box.appendChild(span);
+					break;
+			}
+		}
+		}
+		
+		
+		
+		
+	</script>
+	
+	
+
+</body></html>
