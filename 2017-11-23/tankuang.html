@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ok{
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="dialog">
+    <div class="header">这是标题</div>
+    <div class="content">这是中间部分</div>
+    <div class="foot">这是尾部</div>
+</div>
+<div class="ok">
+    <!--<button class="ok">点赞</button>-->
+</div>
+<script>
+    let ok=document.querySelector('.ok');
+    ok.appendChild(thumbs('确定','取消'));
+//    ok.onclick = function(){
+//        if(this.isOK){
+//            this.innerHTML = '点赞';
+//            this.isOK= false;
+//        }else{
+//            this.innerHTML = '取消点赞';
+//            this.isOK= true;
+//        }
+//    };
+    // 把这个点赞的函数封装
+    function thumbs(option1='点赞',option2='取消点赞',html='',callback=function () {}) {
+        let div = document.createElement('div');
+        let button = document.createElement('button');
+        button.innerHTML=option1;
+        div.appendChild(button);
+        div.innerHTML += html;
+        let b=div.getElementsByTagName('button')[0];
+        button.onclick=function () {
+            if(this.isOK){
+                this.innerHTML = option1;
+                this.isOK= false;
+            }else{
+                this.innerHTML = option2;
+                this.isOK= true;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

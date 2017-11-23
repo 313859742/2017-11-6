@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--<li>-->
+        <!--<h2>新闻</h2>-->
+        <!--<ul>-->
+            <!--<li>今天天气很好</li>-->
+            <!--<li>今天天气很好2</li>-->
+            <!--<li>今天天气很好3</li>-->
+            <!--<li>今天天气很好4</li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li>-->
+        <!--<h2>天气</h2>-->
+        <!--<ul>-->
+            <!--<li>今天天气很好</li>-->
+            <!--<li>今天天气很好2</li>-->
+            <!--<li>今天天气很好3</li>-->
+            <!--<li>今天天气很好4</li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li>-->
+        <!--<h2>体育</h2>-->
+        <!--<ul>-->
+            <!--<li>今天天气很好</li>-->
+            <!--<li>今天天气很好2</li>-->
+            <!--<li>今天天气很好3</li>-->
+            <!--<li>今天天气很好4</li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <custom-hello-miaov
+            :title="newsTitle"
+            :list="newsList"
+
+    ></custom-hello-miaov>
+    <custom-div :title="newsTitle1" ></custom-div>
+</div>
+
+<script>
+    Vue.component('custom-hello-miaov' , {
+        props:['title','list'],
+        template : `<div>
+                        <h2>{{title}}</h2>
+                        <ul>
+                            <li v-for="item in list">{{item}}</li>
+                        </ul>
+                         <custom-div></custom-div>
+                  </div>`
+    });
+    Vue.component('custom-div', {
+        props:['title','list'],
+        template:`<div><li>{{title}}</li></div>`
+    });
+    let newsTitle='新闻';
+    let newsList=['1','2','3','a','b','c'];
+    let newsTitle1='娱乐';
+    let newsList1=['娱乐1','娱乐2','娱乐3','娱乐4'];
+    new Vue({
+        el: '#app',
+        data:{
+            newsTitle,
+            newsList,
+            newsTitle1,
+            newsList1
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <button-content
+           :title="button"
+           :list="content"
+           @ok="parentOK"
+   ></button-content>
+    <div v-show="isLogin">
+        <button>发布</button>
+        <div>这是发布的内容</div>
+    </div>
+</div>
+<script>
+    let button='发布';
+    let content = '这是发布的内容';
+    Vue.component('button-content',{
+        props:['title','list'],
+        template:`<div>
+                        <button @click="okHandle">{{title}}</button>
+                       <div >{{list}}</div>
+                </div>
+        `,
+        methods:{
+            okHandle(){
+                this.$emit('ok');  //内部发生的事情，谁关心谁订阅
+            }
+        }
+    } );
+    new Vue({
+        el : '#app',
+        data:{
+            button,
+            content,
+            isLogin : false
+        },
+        methods:{
+            parentOK(){
+              this.isLogin=!this.isLogin ;
+            }
+        }
+    });
+</script>
+</body>
+</html>

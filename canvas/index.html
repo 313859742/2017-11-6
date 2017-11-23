@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,html{
+				margin:0;
+				height:100%;
+			}
+			#canvas{
+				box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+				position:absolute;
+				left:100px;
+				top:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<script type="text/javascript" src="utils.js" ></script>
+		<script>
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext('2d'); //getContext() 方法返回一个用于在画布上绘图的环境。
+			// 指定好分辨率
+			let W =canvas.width = 800;
+			let H = canvas.height= 600;
+
+			let mouse = C.getOffset(canvas);
+            drawSystem(); // 调用画布的函数
+            canvas.addEventListener('mousemove',function (e) {
+                ctx.clearRect(0, 0, W, H); // 删除画布
+                drawSystem();// 重新调用
+                ctx.beginPath(); // 开始一条路径
+                ctx.lineTo(mouse.x,mouse.y); //到达的位置（x，y）
+                ctx.lineTo(W/2,H/2); //到达的位置（x，y）
+                ctx.stroke(); // 描边
+            });
+            function drawSystem() {
+				ctx.save();//保存canvas的状态
+				ctx.beginPath(); // 开始一条路径
+				ctx.lineWidth=1.5; // 线的宽度
+				// x线
+				ctx.moveTo(0,H/2); // x线的起始位置
+				ctx.lineTo(W,H/2); // x要到的位置
+				// y 线
+				ctx.moveTo(W/2,0); // y线的起始位置
+				ctx.lineTo(W/2,H);// y线要到的位置
+				ctx.stroke(); // 描边
+                ctx.restore();//恢复canvas的状态
+            }
+
+		</script>
+	</body>
+</html>
