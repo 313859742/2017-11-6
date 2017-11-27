@@ -21,7 +21,6 @@
       checked: true
     }
   ];
-
 export default {
   data(){
     return {

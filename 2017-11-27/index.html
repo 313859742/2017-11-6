@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button id="requestToSend">发送请求</button>
+</body>
+<script>
+    function ajax1(){
+       return new Promise(function (reslove,reject) {
+           $.ajax({
+                url:'http://192.168.2.75:3001/user',
+                type:'get',
+                success:reslove,
+               error:reject
+           })
+       })
+    }
+    function ajax2(){
+        return new Promise(function (reslove,reject) {
+            $.ajax({
+                url:'http://192.168.2.75:3001/adress',
+                type:'post',
+                success:reslove,
+                error:reject
+            })
+        })
+    }
+    function ajax3(){
+        return new Promise(function (reslove,reject) {
+            $.ajax({
+                url:'http://192.168.2.75:3001/shop',
+                type:'get',
+                success:reslove,
+                error:reject
+            })
+        })
+    }
+    ajax1()
+        .then(function (data) {
+            console.log(data);
+            return ajax2()
+        })
+        .then(function (data) {
+            console.log(data);
+            return ajax3()
+        })
+        .then(function (data) {
+            console.log(data);
+        }).catch(function (err) {
+        console.log(err);
+    });
+    //并发，多个一次发送，只是有一个错了，全部都错
+//    Promise.all([ajax1(),ajax2(),ajax3()]).then(function (arr) {
+//        console.log(arr);
+//    }).catch(function (err) {
+//        console.log(err);
+//    });
+//    //
+//    Promise.resolve(123).then(function (arr) {
+//        console.log(arr);
+//    });
+    /******************************************1.starte*****************************/
+    //回调地狱
+//    $('#requestToSend').on('click',function(){
+//        $.ajax({
+//            url:'http://192.168.2.75:3001/user',
+//            type:'GET',
+//            success:( function(data) {
+//                console.log(1,data);
+//                console.log(2,data);
+//                console.log(3,data);
+//                console.log(4,data);
+//                $.ajax({
+//                    url:'http://192.168.2.75:3001/shop',
+//                    type:'get',
+//                    success:( function(data) {
+//                        console.log(data);
+//                        $.ajax({
+//                            url:'http://192.168.2.75:3001/adress',
+//                            type:'post',
+//                            success:( function(data) {
+//                                console.log(11,data);
+//                                console.log(12,data);
+//                                console.log(13,data);
+//                                console.log(14,data);
+//                                console.log(15,data);
+//                            })
+//                        });
+//                    })
+//                });
+//            })
+//        });
+//    });
+    /********************************************1.end***********************************/
+</script>
+</html>

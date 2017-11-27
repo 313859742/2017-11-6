@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        .canvas_box{
+            width:300px;
+            height:300px;
+            border:1px solid #000;
+            position:relative;;
+        }
+        img{
+            width:50px;
+            height:50px;
+        }
+        .canvas_item{
+            width:200px;
+            height:200px;
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/bg.jpg" alt="" id="scream">
+    <canvas class="canvas_item" id="myCanvas" ></canvas>
+</body>
+<script>
+    let c=document.getElementById("myCanvas");
+    let ctx=c.getContext("2d");
+    let img=document.getElementById("scream");
+    ctx.drawImage(img,50,50,60,60);
+
+</script>
+</html>
