@@ -39,20 +39,20 @@
             })
         })
     }
-    ajax1()
-        .then(function (data) {
-            console.log(data);
-            return ajax2()
-        })
-        .then(function (data) {
-            console.log(data);
-            return ajax3()
-        })
-        .then(function (data) {
-            console.log(data);
-        }).catch(function (err) {
-        console.log(err);
-    });
+//    ajax1()
+//        .then(function (data) {
+//            console.log(data);
+//            return ajax2()
+//        })
+//        .then(function (data) {
+//            console.log(data);
+//            return ajax3()
+//        })
+//        .then(function (data) {
+//            console.log(data);
+//        }).catch(function (err) {
+//        console.log(err);
+//    });
     //并发，多个一次发送，只是有一个错了，全部都错
 //    Promise.all([ajax1(),ajax2(),ajax3()]).then(function (arr) {
 //        console.log(arr);

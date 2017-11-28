@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="100"
+        style="border:1px solid #000000;">
+</canvas>
+<script>
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    ctx.fillStyle="#FF0000"; // 填充颜色
+    ctx.fillRect(0,0,130,50); //填充位置，第一个第二个参数是坐标的起始位置，第三的参数是填充的宽度，第四个参数是填充的高度
+</script>
+</body>
+</html>

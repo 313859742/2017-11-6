@@ -3,33 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>canvas</title>
-    <style>
-        .canvas_box{
-            width:300px;
-            height:300px;
-            border:1px solid #000;
-            position:relative;;
-        }
-        img{
-            width:50px;
-            height:50px;
-        }
-        .canvas_item{
-            width:200px;
-            height:200px;
-            border:1px solid #000;
-        }
-    </style>
+  <style>
+
+  </style>
 </head>
 <body>
-    <img src="./img/bg.jpg" alt="" id="scream">
-    <canvas class="canvas_item" id="myCanvas" ></canvas>
+    <canvas id="canvas"></canvas>
+    <div style="display:none;">
+        <img id="source" src="./img/bg.jpg">
+    </div>
 </body>
 <script>
-    let c=document.getElementById("myCanvas");
-    let ctx=c.getContext("2d");
-    let img=document.getElementById("scream");
-    ctx.drawImage(img,50,50,60,60);
-
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    let image = document.getElementById('source');
+    ctx.drawImage(image, 100, 50, 100, 100);
 </script>
 </html>
