@@ -11,15 +11,15 @@
 </template>
 
 <script>
-  export default {
-    beforeRouteEnter:(to,form,next)=>{
-      // 判断有没有登陆，isLogin:{login:true/false}
-      let o=JSON.parse(localStorage.getItem('isLogin')) ||{};
-      if(o.login){
-        next();
-      }else{
-        next('/login');
-      }
-    }
-  }
+//  export default {
+//    beforeRouteEnter:(to,form,next)=>{
+//      // 判断有没有登陆，isLogin:{login:true/false}
+//      let o=JSON.parse(localStorage.getItem('isLogin')) ||{};
+//      if(o.login){
+//        next();
+//      }else{
+//        next('/login');
+//      }
+//    }
+//  }
 </script>

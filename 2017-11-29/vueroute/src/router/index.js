@@ -11,7 +11,7 @@ import doc from '@/views/backend/doc'
 // @符号，意思是src下的目录
 Vue.use(Router)
 
-export default new Router({
+let router= new Router({
   mode:'history',
   routes: [
     {
@@ -27,17 +27,26 @@ export default new Router({
         {
           path: 'workbench',
           name: 'workbench',
-          component: workbench
+          component: workbench,
+          meta:{
+            login:true
+          }
         },
         {
           path: 'project',
           name: 'project',
-          component: project
+          component: project,
+          meta:{
+            login:true
+          }
         },
         {
           path: 'doc',
           name: 'doc',
-          component: doc
+          component: doc,
+          meta:{
+            login:false
+          }
         }
       ]
     },
@@ -46,6 +55,25 @@ export default new Router({
       name:'Login',
       component:Login
     }
-
-  ]
+  ],
 })
+router.beforeEach( (to,from,next) =>{
+  //判断，访问的路径是否需要登陆,true==>登陆，false==》不需要登陆
+  if( to.matched.some( item => item.meta.login)){
+    let r=''
+    let o = JSON.parse(localStorage.getItem('isLogin')) ||{};
+    if(o.login){
+      next();
+    }else{
+      next({
+        path:'/login',
+        query:{
+            r:to.name
+        }
+      });
+    }
+  }else{
+    next();
+  }; // 保存的是访问这个路径的左右的嵌套父级的路由信息对象
+} );
+export default router
