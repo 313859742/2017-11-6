@@ -1,15 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home'
-import Login from '@/components/login'
-import Backend from '@/views/backend'
-import workbench from '@/views/backend/work'
+// import Home from '@/components/home'
+// import Login from '@/components/login'
+// import Backend from '@/views/backend'
+// import workbench from '@/views/backend/work'
 import project from '@/views/backend/project'
 import doc from '@/views/backend/doc'
-
-
+let Home=()=>{
+  return import('@/components/home');
+}
+let Login=()=>{
+  return import('@/components/login');
+}
+let Backend=()=>{
+  return import('@/views/backend');
+}
+let workbench=()=>{
+  return import('@/views/backend/work');
+}
 // @符号，意思是src下的目录
-Vue.use(Router)
+Vue.use(Router);
 
 let router= new Router({
   mode:'history',
