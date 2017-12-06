@@ -53,6 +53,7 @@
 							<li class="active"><a href="javascript:;">官方配件</a></li>
 							<li><a href="javascript:;">周边产品</a></li>
 							<li><a href="javascript:;">第三方配件</a></li>
+							<li><a href="javascript:;">第三方配件</a></li>
 							<li><a href="javascript:;">全部商品</a></li>
 							<li><a href="javascript:;">服务</a></li>
 						</ul>
@@ -68,6 +69,9 @@
   export default {
     components:{
       shopCar
+    },
+    created(){
+      this.$store.dispatch('getCarShopIds')
     }
   }
 </script>

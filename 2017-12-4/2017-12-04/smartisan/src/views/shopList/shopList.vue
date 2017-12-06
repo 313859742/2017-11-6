@@ -34,9 +34,8 @@
         shopItem
       },
       created(){
-        getShopListMethod().then((params) => {
+        getShopListMethod().then( (params) => {
           this.list = params.data.data.list;
-//          console.log(this.list)
         })
       }
   }

@@ -25,6 +25,7 @@
         <span
           class="item-blue-btn"
           @click="addCar"
+          v-if="list[index].direct_to_cart"
         >加入购物车 </span>
       </div>
       <div class="item-price clearfix">
@@ -38,7 +39,7 @@
   </div>
 </template>
 <script>
-  import {getShopCount} from '@/gitData/methos'
+
   export default {
     data(){
       return {
@@ -61,10 +62,18 @@
       },
       addCar(){  // 添加购物车,拿到要添加到购物车的id
         let skuId =this.list[this.index].sku_id ; // 拿到id
-        console.log(skuId);
-        getShopCount(skuId,1).then((params) => {
-          console.log(params.data.idsList)
-        })
+        this.$store.dispatch('addCarCountAction',{skuId})
+        //已经购买的商品，第二次发送请求的时候，就没必要在获取商品的数据了
+//        getShopCount({skuId,count:1}).then((params) => {
+//          getAddCarData({skuId}).then( (params2) =>{
+//            console.log(params2.data);
+//            let shop = params2.data.data.list[0];
+//            this.$store.commit('changeCarShops',{
+//              shop
+//            })
+//          });
+//          console.log(params.data);
+//        })
       }
     }
   }
