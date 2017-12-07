@@ -6,7 +6,7 @@
 								<i>0</i>
 							</span>
     <div class="nav-cart-wrapper">
-      <div class="nav-cart-list">
+      <div class="nav-cart-list" style="display:none">
         <div class="empty" v-show="!shops.length">
           <h3>购物车为空</h3>
           <p>您还没有选购任何商品，现在前往商城选购吧!</p>
@@ -42,10 +42,16 @@
             </ul>
           </div>
           <div class="nav-cart-total" >
-            <p>共 <strong class="ng-binding">1</strong> 件商品</p>
-            <h5>合计：<span class="price-icon">¥</span><span class="price-num ng-binding" ng-bind="cartMenu.totalPrice">49</span></h5>
+            <p>共 <strong class="ng-binding">{{ numAndMoney.totalCount}}</strong> 件商品</p>
+            <h5>合计：
+              <span class="price-icon">¥</span>
+              <span class="price-num ng-binding" ng-bind="cartMenu.totalPrice">
+                {{ numAndMoney.totalMoney}}
+              </span>
+            </h5>
             <h6>
-              <a ng-href="http://www.smartisan.com/shop/#/cart" class="nav-cart-btn" href="http://www.smartisan.com/shop/#/cart">去购物车</a>
+              <router-link :to="{name:'Car'}" class="nav-cart-btn">去购物车</router-link>
+              <!--<a ng-href="http://www.smartisan.com/shop/#/cart" class="nav-cart-btn" href="http://www.smartisan.com/shop/#/cart">去购物车</a>-->
             </h6>
           </div>
         </div>
@@ -55,18 +61,18 @@
 </template>
 
 <script>
-//  import {removeCountId} from '@/gitData/methos'
   export default {
     computed:{
       shops(){
         return this.$store.state.carShops;
+      },
+      numAndMoney(){
+        return this.$store.getters.numAndMoney;
       }
     },
     methods:{
       deleteList(skuId){
-        removeCountId(skuId).then(function (params) {
-
-        })
+        this.$store.dispatch('removeCountBySkuId',{ skuId})
       }
     }
   }

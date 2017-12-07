@@ -20,7 +20,8 @@
       </div>
       <div class="item-btns clearfix">
         <span class="item-gray-btn">
-          <a href="javascript:;" target="_blank" >查看详情 </a>
+          <router-link target="_blank"  to="/shop/detail">查看详情</router-link>
+          <!--<a href="javascript:;" target="_blank" >查看详情 </a>-->
         </span>
         <span
           class="item-blue-btn"

@@ -6,7 +6,7 @@ let urlMap={
   'shop_list': 'shop_list',
   'count': 'count',
   'add_cart':'add_cart',
-  'remove_count':'remove_count'
+  'remove_count':'remove_ount'
 };
 export function getShopListMethod() {
   return Axios.get( base + urlMap.shop_list)
